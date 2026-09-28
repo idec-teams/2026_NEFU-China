@@ -32,6 +32,24 @@
         }.bind(this));
       }
 
+      // Decouple the loader from slow assets (large images): DOM readiness is
+      // enough for it to finish. 'load' and the timeout remain as backstops.
+      var domReady = function() {
+        setTimeout(function() {
+          this.windowLoaded = true;
+          var elapsed = performance.now() - this.start;
+          if (elapsed >= LOOP_POINT) {
+            this.start = performance.now() - LOOP_POINT;
+          }
+        }.bind(this), 200);
+      }.bind(this);
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', domReady);
+      } else {
+        domReady();
+      }
+
       this.setPhase(0);
       requestAnimationFrame(this.tick.bind(this));
 
