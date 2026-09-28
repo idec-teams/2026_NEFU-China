@@ -33,7 +33,6 @@ jobs:
           mkdir -p _site
           rsync -a --delete \
             --exclude='.github' \
-            --exclude='.workbuddy' \
             --exclude='_site' \
             ./ _site/
 
