@@ -487,13 +487,6 @@ main:has(> .page-hero-banner) { padding-top: 0; }
   font-size: clamp(3.25rem, 7vw, 5rem);
 }
 
-@media (prefers-color-scheme: dark) {
-  .page-hero-banner {
-    position: relative;
-    background: url('../static/img/hero-forest.jpg') center top / cover no-repeat;
-  }
-}
-
 .section-label {
   display: inline-block;
   font-size: var(--fs-xs);

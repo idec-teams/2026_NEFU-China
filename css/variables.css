@@ -1,4 +1,5 @@
 :root {
+  color-scheme: light;
 
   --color-primary: #4a5926;
   --color-primary-light: #6b7d35;
@@ -142,17 +143,5 @@
   :root {
     --nav-h: 68px;
     --nav-height: 68px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-text-primary: #ecf4d9;
-    --color-text-secondary: #d9eda8;
-    --color-text-tertiary: #c3d97e;
-    --color-bg: #1a2010;
-    --color-bg-alt: #232b14;
-    --color-bg-warm: #28301a;
-    --glass-bg: rgba(26, 32, 16, 0.7);
   }
 }
