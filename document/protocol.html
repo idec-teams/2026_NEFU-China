@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEFU-China iDEC 2026 | Protocol</title>
+  <meta name="description" content="Step-by-step experimental procedures for enzyme engineering and pathway assembly." />
+
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/navigation.css" />
+  <link rel="stylesheet" href="../css/loader.css" />
+</head>
+<body>
+
+  <canvas id="particles-canvas"></canvas>
+  <div class="bg-gradient-layer" aria-hidden="true"></div>
+
+  <div id="loader" class="loader" role="status" aria-label="Loading">
+    <div class="loader-content">
+      <div class="loader-art">
+        <div class="loader-sticker">
+          <img class="loader-dog" data-phase="0" src="../static/img/loader/loader-0.svg" alt="Loading in progress" decoding="async" />
+          <img class="loader-dog" data-phase="25" src="../static/img/loader/loader-25.svg" alt="" decoding="async" />
+          <img class="loader-dog" data-phase="50" src="../static/img/loader/loader-50.svg" alt="" decoding="async" />
+          <img class="loader-dog" data-phase="75" src="../static/img/loader/loader-75.svg" alt="" decoding="async" />
+          <img class="loader-dog" data-phase="100" src="../static/img/loader/loader-100.svg" alt="" decoding="async" />
+        </div>
+      </div>
+
+      <div class="loader-text">
+        LOADING
+        <span class="loader-text-dots">
+          <span></span><span></span><span></span>
+        </span>
+      </div>
+      <div class="loader-brand">iDEC | 2026</div>
+    </div>
+  </div>
+
+  <nav id="navbar" class="navbar">
+    <div class="navbar-glass"></div>
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-brand">
+        <div class="nav-logo">
+          <img src="../static/teamlogo.png" alt="NEFU-China Team Logo" class="nav-logo-img" />
+        </div>
+        <div class="nav-brand-text">
+          <span class="nav-brand-name">NEFU-China</span>
+          <span class="nav-brand-sub">iDEC 2026</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li class="nav-link-item" data-nav="home">
+          <a href="../index.html" class="nav-link">Home</a>
+        </li>
+        <li class="nav-link-item" data-nav="team"><a href="../team/member.html" class="nav-link">Team</a></li>
+        <li class="nav-link-item has-dropdown" data-nav="project">
+          <a class="nav-link" role="button" tabindex="0">
+            Project
+            <svg class="nav-link-icon" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <div class="nav-dropdown">
+            <a href="../project/background.html" class="nav-dropdown-item">Background</a>
+            <a href="../project/design.html" class="nav-dropdown-item">Design</a>
+            <a href="../project/results.html" class="nav-dropdown-item">Results</a>
+            <a href="../static/document/report.pdf" target="_blank" class="nav-dropdown-item">Report</a>
+            <a href="../static/document/supplementary-information.pdf" target="_blank" class="nav-dropdown-item">Supplementary Information</a>
+          
+            <a href="../project/hardware.html" class="nav-dropdown-item">Hardware</a></div>
+        </li>
+        <li class="nav-link-item has-dropdown" data-nav="document">
+          <a class="nav-link" role="button" tabindex="0">
+            Document
+            <svg class="nav-link-icon" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <div class="nav-dropdown">
+            <a href="notebook.html" class="nav-dropdown-item">Notebook</a>
+            <a href="safety.html" class="nav-dropdown-item">Safety</a>
+            <a href="protocol.html" class="nav-dropdown-item">Protocol</a>
+          </div>
+        </li>
+      </ul>
+
+      <button id="navToggle" class="nav-toggle" aria-label="Toggle menu">
+        <div class="nav-toggle-icon">
+          <span></span><span></span><span></span>
+        </div>
+      </button>
+    </div>
+    <div class="nav-scroll-indicator"></div>
+  </nav>
+
+  <div id="mobileNav" class="mobile-nav">
+    <div class="mobile-nav-section" data-section="home">
+      <a href="../index.html" class="mobile-nav-top">Home</a>
+    </div>
+    <a href="../team/member.html" class="mobile-nav-top">Team</a>
+    <div class="mobile-nav-section" data-section="project">
+      <button class="mobile-nav-head" type="button" aria-expanded="false">
+        <span class="mobile-nav-title">Project</span>
+        <svg class="mobile-nav-chevron" viewBox="0 0 16 16" fill="none">
+          <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="mobile-nav-sublist">
+        <a href="../project/background.html" class="mobile-nav-link">Background</a>
+        <a href="../project/design.html" class="mobile-nav-link">Design</a>
+        <a href="../project/results.html" class="mobile-nav-link">Results</a>
+        <a href="../static/document/report.pdf" target="_blank" class="mobile-nav-link">Report</a>
+        <a href="../static/document/supplementary-information.pdf" target="_blank" class="mobile-nav-link">Supplementary Information</a>
+      
+        <a href="../project/hardware.html" class="mobile-nav-link">Hardware</a></div>
+    </div>
+    <div class="mobile-nav-section" data-section="document">
+      <button class="mobile-nav-head" type="button" aria-expanded="false">
+        <span class="mobile-nav-title">Document</span>
+        <svg class="mobile-nav-chevron" viewBox="0 0 16 16" fill="none">
+          <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="mobile-nav-sublist">
+        <a href="notebook.html" class="mobile-nav-link">Notebook</a>
+        <a href="safety.html" class="mobile-nav-link">Safety</a>
+        <a href="protocol.html" class="mobile-nav-link">Protocol</a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <header class="page-hero-banner">
+      <div class="container" style="padding-top: calc(var(--nav-h) + clamp(28px, 4vw, 56px)); padding-bottom: clamp(48px, 6vw, 88px);">
+        <div class="section-header reveal" style="margin-bottom: 0;">
+          <h1 class="section-title">Protocol</h1>
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+
+      <div class="section">
+        <div class="protocol-accordion">
+
+          <div class="protocol-item reveal">
+            <button class="protocol-btn" type="button" aria-expanded="false" aria-controls="proto-panel-1">
+              <span class="protocol-btn-index">01</span>
+              <span class="protocol-btn-title">Ligation</span>
+              <svg class="protocol-btn-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="protocol-panel" id="proto-panel-1">
+              <div class="protocol-panel-inner">
+                <div class="protocol-panel-content">
+                  <h4 class="protocol-subtitle">Ligation</h4>
+                  <p class="protocol-desc">This protocol is used to ligate two or more pieces of DNA together. For more detailed information, please click on the link.</p>
+                  <a class="protocol-pdf-link" href="../static/document/Ligation.pdf" target="_blank" rel="noopener">Open PDF &#8599;</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="protocol-item reveal">
+            <button class="protocol-btn" type="button" aria-expanded="false" aria-controls="proto-panel-2">
+              <span class="protocol-btn-index">02</span>
+              <span class="protocol-btn-title">Nucleicacid and protein electrophoresis</span>
+              <svg class="protocol-btn-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="protocol-panel" id="proto-panel-2">
+              <div class="protocol-panel-inner">
+                <div class="protocol-panel-content">
+                  <h4 class="protocol-subtitle">Nucleic acid and protein electrophoresis</h4>
+                  <p class="protocol-desc">This protocol covers two types of electrophoresis used to detect target DNA or protein. For more detailed information, please click on the link.</p>
+                  <a class="protocol-pdf-link" href="../static/document/Nucleicacid_and_protein_electrophoresis.pdf" target="_blank" rel="noopener">Open PDF &#8599;</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="protocol-item reveal">
+            <button class="protocol-btn" type="button" aria-expanded="false" aria-controls="proto-panel-3">
+              <span class="protocol-btn-index">03</span>
+              <span class="protocol-btn-title">DNA Gel Extraction</span>
+              <svg class="protocol-btn-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="protocol-panel" id="proto-panel-3">
+              <div class="protocol-panel-inner">
+                <div class="protocol-panel-content">
+                  <h4 class="protocol-subtitle">DNA gel extraction</h4>
+                  <p class="protocol-desc">This protocol is used to recover the target DNA fragment from agarose gel. For more detailed information, please click on the link.</p>
+                  <a class="protocol-pdf-link" href="../static/document/DNA_Gel_Extraction.pdf" target="_blank" rel="noopener">Open PDF &#8599;</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="protocol-item reveal">
+            <button class="protocol-btn" type="button" aria-expanded="false" aria-controls="proto-panel-4">
+              <span class="protocol-btn-index">04</span>
+              <span class="protocol-btn-title">Polymerase chain reaction</span>
+              <svg class="protocol-btn-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="protocol-panel" id="proto-panel-4">
+              <div class="protocol-panel-inner">
+                <div class="protocol-panel-content">
+                  <h4 class="protocol-subtitle">Polymerase chain reaction</h4>
+                  <p class="protocol-desc">This protocol is used to amplify target DNA fragments for plasmid construction or other applications. For more detailed information, please click on the link.</p>
+                  <a class="protocol-pdf-link" href="../static/document/Polymerase_chain_reaction.pdf" target="_blank" rel="noopener">Open PDF &#8599;</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="protocol-item reveal">
+            <button class="protocol-btn" type="button" aria-expanded="false" aria-controls="proto-panel-5">
+              <span class="protocol-btn-index">05</span>
+              <span class="protocol-btn-title">Enzyme digestion verification</span>
+              <svg class="protocol-btn-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="protocol-panel" id="proto-panel-5">
+              <div class="protocol-panel-inner">
+                <div class="protocol-panel-content">
+                  <h4 class="protocol-subtitle">Enzyme digestion verification</h4>
+                  <p class="protocol-desc">This protocol is used to verify the enzyme digestion result of a DNA sample. For more detailed information, please click on the link.</p>
+                  <a class="protocol-pdf-link" href="../static/document/Enzyme_digestion_verification.pdf" target="_blank" rel="noopener">Open PDF &#8599;</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="protocol-item reveal">
+            <button class="protocol-btn" type="button" aria-expanded="false" aria-controls="proto-panel-6">
+              <span class="protocol-btn-index">06</span>
+              <span class="protocol-btn-title">PCR product purification</span>
+              <svg class="protocol-btn-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="protocol-panel" id="proto-panel-6">
+              <div class="protocol-panel-inner">
+                <div class="protocol-panel-content">
+                  <h4 class="protocol-subtitle">PCR product purification</h4>
+                  <p class="protocol-desc">This protocol is used to purify PCR products (when a single band is observed by gel electrophoresis). For more detailed information, please click on the link.</p>
+                  <a class="protocol-pdf-link" href="../static/document/PCR_product_purification.pdf" target="_blank" rel="noopener">Open PDF &#8599;</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="protocol-item reveal">
+            <button class="protocol-btn" type="button" aria-expanded="false" aria-controls="proto-panel-7">
+              <span class="protocol-btn-index">07</span>
+              <span class="protocol-btn-title">Plasmid DNA extraction</span>
+              <svg class="protocol-btn-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="protocol-panel" id="proto-panel-7">
+              <div class="protocol-panel-inner">
+                <div class="protocol-panel-content">
+                  <h4 class="protocol-subtitle">Plasmid DNA extraction</h4>
+                  <p class="protocol-desc">This protocol is used to extract plasmid DNA from E. coli. For more detailed information, please click on the link.</p>
+                  <a class="protocol-pdf-link" href="../static/document/Plasmid_DNA_extraction.pdf" target="_blank" rel="noopener">Open PDF &#8599;</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="protocol-item reveal">
+            <button class="protocol-btn" type="button" aria-expanded="false" aria-controls="proto-panel-8">
+              <span class="protocol-btn-index">08</span>
+              <span class="protocol-btn-title">Restriction endonuclease reactions</span>
+              <svg class="protocol-btn-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="protocol-panel" id="proto-panel-8">
+              <div class="protocol-panel-inner">
+                <div class="protocol-panel-content">
+                  <h4 class="protocol-subtitle">Restriction endonuclease reactions</h4>
+                  <p class="protocol-desc">This protocol describes restriction endonuclease reactions using NEB restriction enzymes. For more detailed information, please click on the link.</p>
+                  <a class="protocol-pdf-link" href="../static/document/Restriction_endonuclease_reactions.pdf" target="_blank" rel="noopener">Open PDF &#8599;</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="protocol-item reveal">
+            <button class="protocol-btn" type="button" aria-expanded="false" aria-controls="proto-panel-9">
+              <span class="protocol-btn-index">09</span>
+              <span class="protocol-btn-title">Preparation of electrocompetent cells</span>
+              <svg class="protocol-btn-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="protocol-panel" id="proto-panel-9">
+              <div class="protocol-panel-inner">
+                <div class="protocol-panel-content">
+                  <h4 class="protocol-subtitle">Preparation of electrocompetent cells</h4>
+                  <p class="protocol-desc">This protocol is used to prepare electrocompetent cells with high transformation efficiency. For more detailed information, please click on the link.</p>
+                  <a class="protocol-pdf-link" href="../static/document/Preparation_of_electrocompetent_cells.pdf" target="_blank" rel="noopener">Open PDF &#8599;</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="protocol-item reveal">
+            <button class="protocol-btn" type="button" aria-expanded="false" aria-controls="proto-panel-10">
+              <span class="protocol-btn-index">10</span>
+              <span class="protocol-btn-title">Transformation</span>
+              <svg class="protocol-btn-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="protocol-panel" id="proto-panel-10">
+              <div class="protocol-panel-inner">
+                <div class="protocol-panel-content">
+                  <h4 class="protocol-subtitle">Transformation</h4>
+                  <p class="protocol-desc">This protocol is used to introduce plasmid DNA into competent cells via chemical treatment or electroporation. For more detailed information, please click on the link.</p>
+                  <a class="protocol-pdf-link" href="../static/document/Transformation.pdf" target="_blank" rel="noopener">Open PDF &#8599;</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+    <footer>
+    <div class="footer-grid">
+      <div class="footer-logos">
+        <img src="../static/teamlogo.png" alt="NEFU-China Team Logo" class="footer-teamlogo" />
+      </div>
+      <div class="footer-col footer-about">
+        <h4>About us</h4>
+        <p>This team is composed of enthusiastic students from five different colleges and various majors. To spy out the secrets of directed evolution, a group of beginners are looking forward to creating extraordinary experiences and we did it.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quicklinks</h4>
+        <ul>
+          <li><a href="../project/background.html">Background</a></li>
+          <li><a href="../project/design.html">Design</a></li>
+          <li><a href="../project/results.html">Results</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact info</h4>
+        <ul>
+          <li>Address : Northeast Forestry University, Harbin, Heilongjiang 150040, P. R. China</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>iDEC-2026 NEFU-China</p>
+    </div>
+  </footer>
+
+  <script src="../js/loader.js"></script>
+  <script src="../js/particles.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

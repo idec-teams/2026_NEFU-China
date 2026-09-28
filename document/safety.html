@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEFU-China iDEC 2026 | Safety</title>
+  <meta name="description" content="Safety protocols and practices governing all laboratory work for the iDEC 2026 project." />
+
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/navigation.css" />
+  <link rel="stylesheet" href="../css/loader.css" />
+  <link rel="stylesheet" href="../css/article.css" />
+</head>
+<body>
+
+  <canvas id="particles-canvas"></canvas>
+  <div class="bg-gradient-layer" aria-hidden="true"></div>
+
+  <div id="loader" class="loader" role="status" aria-label="Loading">
+    <div class="loader-content">
+      <div class="loader-art">
+        <div class="loader-sticker">
+          <img class="loader-dog" data-phase="0" src="../static/img/loader/loader-0.svg" alt="Loading in progress" decoding="async" />
+          <img class="loader-dog" data-phase="25" src="../static/img/loader/loader-25.svg" alt="" decoding="async" />
+          <img class="loader-dog" data-phase="50" src="../static/img/loader/loader-50.svg" alt="" decoding="async" />
+          <img class="loader-dog" data-phase="75" src="../static/img/loader/loader-75.svg" alt="" decoding="async" />
+          <img class="loader-dog" data-phase="100" src="../static/img/loader/loader-100.svg" alt="" decoding="async" />
+        </div>
+      </div>
+
+      <div class="loader-text">
+        LOADING
+        <span class="loader-text-dots">
+          <span></span><span></span><span></span>
+        </span>
+      </div>
+      <div class="loader-brand">iDEC | 2026</div>
+    </div>
+  </div>
+
+  <nav id="navbar" class="navbar">
+    <div class="navbar-glass"></div>
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-brand">
+        <div class="nav-logo">
+          <img src="../static/teamlogo.png" alt="NEFU-China Team Logo" class="nav-logo-img" />
+        </div>
+        <div class="nav-brand-text">
+          <span class="nav-brand-name">NEFU-China</span>
+          <span class="nav-brand-sub">iDEC 2026</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li class="nav-link-item" data-nav="home">
+          <a href="../index.html" class="nav-link">Home</a>
+        </li>
+        <li class="nav-link-item" data-nav="team"><a href="../team/member.html" class="nav-link">Team</a></li>
+        <li class="nav-link-item has-dropdown" data-nav="project">
+          <a class="nav-link" role="button" tabindex="0">
+            Project
+            <svg class="nav-link-icon" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <div class="nav-dropdown">
+            <a href="../project/background.html" class="nav-dropdown-item">Background</a>
+            <a href="../project/design.html" class="nav-dropdown-item">Design</a>
+            <a href="../project/results.html" class="nav-dropdown-item">Results</a>
+            <a href="../static/document/report.pdf" target="_blank" class="nav-dropdown-item">Report</a>
+            <a href="../static/document/supplementary-information.pdf" target="_blank" class="nav-dropdown-item">Supplementary Information</a>
+
+            <a href="../project/hardware.html" class="nav-dropdown-item">Hardware</a></div>
+        </li>
+        <li class="nav-link-item has-dropdown" data-nav="document">
+          <a class="nav-link" role="button" tabindex="0">
+            Document
+            <svg class="nav-link-icon" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <div class="nav-dropdown">
+            <a href="notebook.html" class="nav-dropdown-item">Notebook</a>
+            <a href="safety.html" class="nav-dropdown-item">Safety</a>
+            <a href="protocol.html" class="nav-dropdown-item">Protocol</a>
+          </div>
+        </li>
+      </ul>
+
+      <button id="navToggle" class="nav-toggle" aria-label="Toggle menu">
+        <div class="nav-toggle-icon">
+          <span></span><span></span><span></span>
+        </div>
+      </button>
+    </div>
+    <div class="nav-scroll-indicator"></div>
+  </nav>
+
+  <div id="mobileNav" class="mobile-nav">
+    <div class="mobile-nav-section" data-section="home">
+      <a href="../index.html" class="mobile-nav-top">Home</a>
+    </div>
+    <a href="../team/member.html" class="mobile-nav-top">Team</a>
+    <div class="mobile-nav-section" data-section="project">
+      <button class="mobile-nav-head" type="button" aria-expanded="false">
+        <span class="mobile-nav-title">Project</span>
+        <svg class="mobile-nav-chevron" viewBox="0 0 16 16" fill="none">
+          <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="mobile-nav-sublist">
+        <a href="../project/background.html" class="mobile-nav-link">Background</a>
+        <a href="../project/design.html" class="mobile-nav-link">Design</a>
+        <a href="../project/results.html" class="mobile-nav-link">Results</a>
+        <a href="../static/document/report.pdf" target="_blank" class="mobile-nav-link">Report</a>
+        <a href="../static/document/supplementary-information.pdf" target="_blank" class="mobile-nav-link">Supplementary Information</a>
+
+        <a href="../project/hardware.html" class="mobile-nav-link">Hardware</a></div>
+    </div>
+    <div class="mobile-nav-section" data-section="document">
+      <button class="mobile-nav-head" type="button" aria-expanded="false">
+        <span class="mobile-nav-title">Document</span>
+        <svg class="mobile-nav-chevron" viewBox="0 0 16 16" fill="none">
+          <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="mobile-nav-sublist">
+        <a href="notebook.html" class="mobile-nav-link">Notebook</a>
+        <a href="safety.html" class="mobile-nav-link">Safety</a>
+        <a href="protocol.html" class="mobile-nav-link">Protocol</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="doc-page">
+
+    
+    <header class="doc-hero page-hero-banner">
+      <div class="doc-container">
+        <h1 class="doc-title">Safety</h1>
+        <button class="doc-toc-toggle" type="button" aria-expanded="false" aria-controls="docToc">
+          Contents
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    
+    <div class="doc-layout doc-container">
+
+      <aside class="doc-toc" id="docToc" aria-label="Table of contents">
+        <nav>
+          <p class="doc-toc-label">On this page</p>
+          <ol class="doc-toc-list" id="docTocList"></ol>
+        </nav>
+      </aside>
+
+      <article class="doc-article" id="docArticle">
+
+        
+        <section class="doc-section" id="prologue">
+          <header class="doc-section-head doc-reveal">
+            <span class="doc-section-num" aria-hidden="true">01</span>
+            <div class="doc-section-headtext">
+              <h2>Prologue</h2>
+            </div>
+          </header>
+
+          <div class="doc-reveal">
+            <p>
+              Safety is one of the most noteworthy issues in experiments. Having a good experimental
+              environment is a prerequisite for achieving ideal experimental results. Therefore, 2026
+              NEFU-China implements several laboratory criteria to ensure experimental safety and has
+              always been practicing.
+            </p>
+          </div>
+        </section>
+
+        
+        <section class="doc-section" id="lab-safety">
+          <header class="doc-section-head doc-reveal">
+            <span class="doc-section-num" aria-hidden="true">02</span>
+            <div class="doc-section-headtext">
+              <h2>Safety in the Laboratory</h2>
+            </div>
+          </header>
+
+          <div class="doc-reveal">
+            <p>
+              All experiments in this project were performed in a BSL-1 laboratory equipped with
+              complete emergency facilities, including first-aid kits, emergency showers, and eyewash
+              stations, to fully protect laboratory personnel. We conducted daily safety inspections
+              and regular comprehensive laboratory audits to maintain a stable and safe experimental
+              environment.
+            </p>
+          </div>
+
+          <figure class="figure-group doc-reveal">
+            <div class="figure-frame">
+              <div class="figure-grid">
+                <div class="figure-item">
+                  <img src="../static/img/safety/st_1.jpg" alt="" width="5712" height="4284" loading="lazy" decoding="async" />
+                </div>
+              </div>
+            </div>
+            <figcaption>
+              <span class="figure-num"></span>
+              Emergency medicine kits in the laboratory
+            </figcaption>
+          </figure>
+
+          <div class="doc-reveal">
+            <p>
+              A standardized laboratory waste disposal protocol was established for all experimental
+              waste. All waste was classified, treated, and recycled in strict accordance with
+              institutional safety regulations. Recyclable experimental materials were sterilized by
+              high-temperature steam to eliminate residual contamination. Although the laboratory
+              produces limited hazardous waste, hazardous chemicals including GelRed for nucleic acid
+              staining and SDS for protein electrophoresis were exclusively handled in designated
+              operational zones to avoid potential exposure risks.
+            </p>
+          </div>
+
+          <figure class="figure-group doc-reveal">
+            <div class="figure-frame">
+              <div class="figure-grid">
+                <div class="figure-item">
+                  <img src="../static/img/safety/st_2.jpg" alt="" width="816" height="612" loading="lazy" decoding="async" />
+                </div>
+              </div>
+            </div>
+            <figcaption>
+              <span class="figure-num"></span>
+              Laboratory safety information board.
+            </figcaption>
+          </figure>
+
+          <div class="doc-reveal">
+            <p>
+              Special independent experimental zones were designated for hazardous operations such as
+              agarose gel electrophoresis. Since microbial cultivation was involved in our
+              experiments, standardized aseptic operation procedures were strictly enforced. All
+              culture media were autoclaved before use, and biosafety cabinets were UV-sterilized for
+              more than 30 minutes prior to each experiment to guarantee a sterile operating
+              environment.
+            </p>
+          </div>
+
+          <figure class="figure-group doc-reveal">
+            <div class="figure-frame">
+              <div class="figure-grid">
+                <div class="figure-item">
+                  <img src="../static/img/safety/st_3.jpg" alt="" width="5712" height="4284" loading="lazy" decoding="async" />
+                </div>
+              </div>
+            </div>
+            <figcaption>
+              <span class="figure-num"></span>
+              Ultra-clean bench in the laboratory.
+            </figcaption>
+          </figure>
+
+          <div class="doc-reveal">
+            <p>
+              All experimental chemicals were securely stored in classified reagent cabinets with
+              clear and standardized labels for safe and standardized access. Regular chemical safety
+              inspections were conducted to ensure reagent validity and laboratory safety.
+            </p>
+          </div>
+
+          <figure class="figure-group doc-reveal">
+            <div class="figure-frame">
+              <div class="figure-grid">
+                <div class="figure-item">
+                  <img src="../static/img/safety/st_4.jpg" alt="" width="4032" height="3024" loading="lazy" decoding="async" />
+                </div>
+              </div>
+            </div>
+            <figcaption>
+              <span class="figure-num"></span>
+              Medical cabinets in the laboratory.
+            </figcaption>
+          </figure>
+
+          <div class="doc-reveal">
+            <p>
+              All team members strictly followed unified laboratory management protocols. Personal
+              protective equipment including lab coats, disposable gloves, and masks was mandatory
+              during all experimental operations. Eating and drinking in the laboratory were strictly
+              prohibited to prevent contamination and safety hazards.
+            </p>
+          </div>
+
+          <figure class="figure-group doc-reveal">
+            <div class="figure-frame">
+              <div class="figure-grid">
+                <div class="figure-item">
+                  <img src="../static/img/safety/st_5.jpg" alt="" width="4032" height="3024" loading="lazy" decoding="async" />
+                </div>
+              </div>
+            </div>
+            <figcaption>
+              <span class="figure-num"></span>
+              Attire in the laboratory.
+            </figcaption>
+          </figure>
+        </section>
+
+        
+        <section class="doc-section" id="exp-safety">
+          <header class="doc-section-head doc-reveal">
+            <span class="doc-section-num" aria-hidden="true">03</span>
+            <div class="doc-section-headtext">
+              <h2>Safety in Experiment</h2>
+            </div>
+          </header>
+
+          <div class="doc-reveal">
+            <p>
+              For biosafety compliance, only non-pathogenic Escherichia coli DH5α and BW25113 strains
+              from the RR-approved safe strain list were used in this study.
+            </p>
+          </div>
+        </section>
+
+        
+        <section class="doc-section" id="hpr-safety">
+          <header class="doc-section-head doc-reveal">
+            <span class="doc-section-num" aria-hidden="true">04</span>
+            <div class="doc-section-headtext">
+              <h2>Safety in Human Practice</h2>
+            </div>
+          </header>
+
+          <div class="doc-reveal">
+            <p>
+              All team members received systematic laboratory safety training and supervisor
+              assessment before accessing the laboratory, ensuring full proficiency in standard
+              operating procedures and emergency protocols.
+            </p>
+          </div>
+
+          <figure class="figure-group doc-reveal">
+            <div class="figure-frame">
+              <div class="figure-grid">
+                <div class="figure-item">
+                  <img src="../static/img/safety/st_6.jpg" alt="" width="1706" height="1279" loading="lazy" decoding="async" />
+                </div>
+              </div>
+            </div>
+            <figcaption>
+              <span class="figure-num"></span>
+              Laboratory safety knowledge introduction
+            </figcaption>
+          </figure>
+
+          <div class="doc-reveal">
+            <p>
+              During all experimental procedures, standardized PPE wearing and regular safety drills
+              were consistently implemented to minimize potential risks and ensure overall laboratory
+              biosafety.
+            </p>
+          </div>
+
+          <figure class="figure-group doc-reveal">
+            <div class="figure-frame">
+              <div class="figure-grid">
+                <div class="figure-item">
+                  <img src="../static/img/safety/st_7.jpg" alt="" width="4032" height="3024" loading="lazy" decoding="async" />
+                </div>
+              </div>
+            </div>
+            <figcaption>
+              <span class="figure-num"></span>
+              Laboratory safety knowledge assessment
+            </figcaption>
+          </figure>
+        </section>
+
+      </article>
+    </div>
+
+  </main>
+
+    <footer>
+    <div class="footer-grid">
+      <div class="footer-logos">
+        <img src="../static/teamlogo.png" alt="NEFU-China Team Logo" class="footer-teamlogo" />
+      </div>
+      <div class="footer-col footer-about">
+        <h4>About us</h4>
+        <p>This team is composed of enthusiastic students from five different colleges and various majors. To spy out the secrets of directed evolution, a group of beginners are looking forward to creating extraordinary experiences and we did it.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quicklinks</h4>
+        <ul>
+          <li><a href="../project/background.html">Background</a></li>
+          <li><a href="../project/design.html">Design</a></li>
+          <li><a href="../project/results.html">Results</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact info</h4>
+        <ul>
+          <li>Address : Northeast Forestry University, Harbin, Heilongjiang 150040, P. R. China</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>iDEC-2026 NEFU-China</p>
+    </div>
+  </footer>
+
+  <script src="../js/loader.js"></script>
+  <script src="../js/particles.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/article.js"></script>
+</body>
+</html>

@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEFU-China iDEC 2026 | Design</title>
+  <meta name="description" content="Design: from lignin to VA, from VA to CHA, from VA to Pyr." />
+
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/navigation.css" />
+  <link rel="stylesheet" href="../css/loader.css" />
+  <link rel="stylesheet" href="../css/article.css" />
+</head>
+<body>
+
+  <canvas id="particles-canvas"></canvas>
+  <div class="bg-gradient-layer" aria-hidden="true"></div>
+
+  <div id="loader" class="loader" role="status" aria-label="Loading">
+    <div class="loader-content">
+      <div class="loader-art">
+        <div class="loader-sticker">
+          <img class="loader-dog" data-phase="0" src="../static/img/loader/loader-0.svg" alt="Loading in progress" decoding="async" />
+          <img class="loader-dog" data-phase="25" src="../static/img/loader/loader-25.svg" alt="" decoding="async" />
+          <img class="loader-dog" data-phase="50" src="../static/img/loader/loader-50.svg" alt="" decoding="async" />
+          <img class="loader-dog" data-phase="75" src="../static/img/loader/loader-75.svg" alt="" decoding="async" />
+          <img class="loader-dog" data-phase="100" src="../static/img/loader/loader-100.svg" alt="" decoding="async" />
+        </div>
+      </div>
+
+      <div class="loader-text">
+        LOADING
+        <span class="loader-text-dots">
+          <span></span><span></span><span></span>
+        </span>
+      </div>
+      <div class="loader-brand">iDEC | 2026</div>
+    </div>
+  </div>
+
+  <nav id="navbar" class="navbar">
+    <div class="navbar-glass"></div>
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-brand">
+        <div class="nav-logo">
+          <img src="../static/teamlogo.png" alt="NEFU-China Team Logo" class="nav-logo-img" />
+        </div>
+        <div class="nav-brand-text">
+          <span class="nav-brand-name">NEFU-China</span>
+          <span class="nav-brand-sub">iDEC 2026</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li class="nav-link-item" data-nav="home">
+          <a href="../index.html" class="nav-link">Home</a>
+        </li>
+        <li class="nav-link-item" data-nav="team"><a href="../team/member.html" class="nav-link">Team</a></li>
+        <li class="nav-link-item has-dropdown" data-nav="project">
+          <a class="nav-link" role="button" tabindex="0">
+            Project
+            <svg class="nav-link-icon" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <div class="nav-dropdown">
+            <a href="background.html" class="nav-dropdown-item">Background</a>
+            <a href="design.html" class="nav-dropdown-item">Design</a>
+            <a href="results.html" class="nav-dropdown-item">Results</a>
+            <a href="../static/document/report.pdf" target="_blank" class="nav-dropdown-item">Report</a>
+            <a href="../static/document/supplementary-information.pdf" target="_blank" class="nav-dropdown-item">Supplementary Information</a>
+
+            <a href="hardware.html" class="nav-dropdown-item">Hardware</a></div>
+        </li>
+        <li class="nav-link-item has-dropdown" data-nav="document">
+          <a class="nav-link" role="button" tabindex="0">
+            Document
+            <svg class="nav-link-icon" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <div class="nav-dropdown">
+            <a href="../document/notebook.html" class="nav-dropdown-item">Notebook</a>
+            <a href="../document/safety.html" class="nav-dropdown-item">Safety</a>
+            <a href="../document/protocol.html" class="nav-dropdown-item">Protocol</a>
+          </div>
+        </li>
+      </ul>
+
+      <button id="navToggle" class="nav-toggle" aria-label="Toggle menu">
+        <div class="nav-toggle-icon">
+          <span></span><span></span><span></span>
+        </div>
+      </button>
+    </div>
+    <div class="nav-scroll-indicator"></div>
+  </nav>
+
+  <div id="mobileNav" class="mobile-nav">
+    <div class="mobile-nav-section" data-section="home">
+      <a href="../index.html" class="mobile-nav-top">Home</a>
+    </div>
+    <a href="../team/member.html" class="mobile-nav-top">Team</a>
+    <div class="mobile-nav-section" data-section="project">
+      <button class="mobile-nav-head" type="button" aria-expanded="false">
+        <span class="mobile-nav-title">Project</span>
+        <svg class="mobile-nav-chevron" viewBox="0 0 16 16" fill="none">
+          <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="mobile-nav-sublist">
+        <a href="background.html" class="mobile-nav-link">Background</a>
+        <a href="design.html" class="mobile-nav-link">Design</a>
+        <a href="results.html" class="mobile-nav-link">Results</a>
+        <a href="../static/document/report.pdf" target="_blank" class="mobile-nav-link">Report</a>
+        <a href="../static/document/supplementary-information.pdf" target="_blank" class="mobile-nav-link">Supplementary Information</a>
+
+        <a href="hardware.html" class="mobile-nav-link">Hardware</a></div>
+    </div>
+    <div class="mobile-nav-section" data-section="document">
+      <button class="mobile-nav-head" type="button" aria-expanded="false">
+        <span class="mobile-nav-title">Document</span>
+        <svg class="mobile-nav-chevron" viewBox="0 0 16 16" fill="none">
+          <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="mobile-nav-sublist">
+        <a href="../document/notebook.html" class="mobile-nav-link">Notebook</a>
+        <a href="../document/safety.html" class="mobile-nav-link">Safety</a>
+        <a href="../document/protocol.html" class="mobile-nav-link">Protocol</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="doc-page">
+
+    
+    <header class="doc-hero page-hero-banner">
+      <div class="doc-container">
+        <h1 class="doc-title">Design</h1>
+        <button class="doc-toc-toggle" type="button" aria-expanded="false" aria-controls="docToc">
+          Contents
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    
+    <div class="doc-layout doc-container">
+
+      <aside class="doc-toc" id="docToc" aria-label="Table of contents">
+        <nav>
+          <p class="doc-toc-label">On this page</p>
+          <ol class="doc-toc-list" id="docTocList"></ol>
+        </nav>
+      </aside>
+
+      <article class="doc-article" id="docArticle">
+
+        
+        <section class="doc-section" id="overview">
+          <header class="doc-section-head doc-reveal">
+            <div class="doc-section-headtext">
+              <h2>Overview</h2>
+            </div>
+          </header>
+
+          <div class="doc-reveal">
+            <p>
+              This project aims to construct an unnatural, fully green pathway for lignin
+              valorization<sup>[1]</sup>. This pathway converts vanillic acid (VA), the funneled product
+              of lignin depolymerization monomers, into the structurally similar high-value molecule
+              chorismic acid (CHA)<sup>[2-4,5]</sup>. To fully utilize and convert diverse aromatic
+              monomers produced by lignin depolymerization, we engineered a biological pathway to funnel
+              all these monomers into VA<sup>[2-4]</sup>. For the transformation from VA to CHA,
+              4-hydroxybenzoic acid (4-HB) was chosen as the key intermediate, and its downstream
+              conversion to CHA has been validated in our prior work. To address the low conversion
+              yield of VA to 4-HB, we adopted directed evolution to boost enzyme activity, combined
+              with a PobR-based biosensor for high-throughput mutant strain screening. To eliminate the
+              reliance of the 4-HB-to-CHA transformation on exogenous pyruvate, we constructed a novel
+              pathway for pyruvate biosynthesis from VA<sup>[1]</sup>. We deployed a biosensor in
+              pyruvate synthesis-deficient hosts to monitor metabolic dynamics. Furthermore, we
+              constructed an RBS mutant library to improve the conversion yield toward pyruvate,
+              ultimately enabling robust endogenous pyruvate biosynthesis. We also aim to improve the
+              screening efficiency of large-scale mutant libraries by incorporating a microfluidic
+              screening platform as a hardware aid<sup>[6,7]</sup>. Collectively, this design aims to
+              integrate pathway rewiring, enzyme engineering and high-throughput screening
+              infrastructure to establish a complete bioconversion pipeline for lignin valorization.
+            </p>
+          </div>
+
+          <figure class="figure figure--normal doc-reveal">
+            <div class="figure-frame">
+              <img src="../static/img/design/ds_overview.png" alt="" width="1285" height="595" loading="lazy" decoding="async" />
+            </div>
+          </figure>
+        </section>
+
+        
+        <section class="doc-section" id="module-1">
+          <header class="doc-section-head doc-reveal">
+            <span class="doc-section-num" aria-hidden="true">01</span>
+            <div class="doc-section-headtext">
+              <h2>Module 1: From Lignin to VA--The Starting Point</h2>
+            </div>
+          </header>
+
+          <div class="doc-reveal">
+            <p>
+              We select four abundant aromatic derivatives from electrochemical depolymerization of
+              lignin: 4-propylguaiacol (4-PG), isoeugenol, vanillin, and vanillic
+              acid<sup>[2-4]</sup>. To funnel these compounds into vanillic acid (VA), we construct a
+              multi-enzyme cascade termed the monomer funnel module<sup>[2-4]</sup>. The upstream module
+              plasmid BW-pYB1a-<em>progo</em>-<em>nov1f</em> co-expresses Progo and Nov1f for oxidative
+              demethylation and side-chain modification of 4-PG toward vanillin; the downstream module
+              plasmid BW-pRB1k-<em>vdh</em>-<em>nox</em> expresses Vdh for vanillin oxidation to
+              VA and Nox for NAD⁺ regeneration.
+            </p>
+          </div>
+
+          <figure class="figure figure--normal doc-reveal">
+            <div class="figure-frame">
+              <img src="../static/img/design/ds_m1_1.png" alt="" width="630" height="363" loading="lazy" decoding="async" />
+            </div>
+          </figure>
+
+          <div class="doc-reveal">
+            <p>
+              We employ p15A-derived (ampicillin) and RSF-derived (kanamycin) vectors to ensure plasmid
+              compatibility in <em>E. coli</em> BW25113. Following induction, protein expression is
+              verified by SDS-PAGE prior to functional assays.
+            </p>
+          </div>
+
+          <div class="doc-reveal">
+            <p>
+              Each enzymatic step and the assembled cascade undergo whole-cell biocatalysis; products
+              are quantified by HPLC. SDS-PAGE and HPLC together confirm correct protein expression and
+              catalytic activity across all module components, providing a quantitative basis for
+              throughput evaluation and pathway optimization.
+            </p>
+          </div>
+
+          <figure class="figure figure--normal doc-reveal">
+            <div class="figure-frame">
+              <img src="../static/img/design/ds_m1_2.png" alt="" width="887" height="391" loading="lazy" decoding="async" />
+            </div>
+          </figure>
+        </section>
+
+        
+        <section class="doc-section" id="module-2">
+          <header class="doc-section-head doc-reveal">
+            <span class="doc-section-num" aria-hidden="true">02</span>
+            <div class="doc-section-headtext">
+              <h2>Module 2: From VA to CHA--The Core Module</h2>
+            </div>
+          </header>
+
+          <h3 id="m2-part1">Part 1 Construction of high-throughput screening system for directed evolution of ODM</h3>
+
+          <div class="doc-reveal">
+            <p>
+              To construct an efficient non‑natural synthetic pathway for lignin valorization that
+              converts lignin‑derived vanillic acid (VA) into 4-hydroxybenzoic acid (4‑HB) and further
+              produces chorismic acid (CHA), we engineered ODM demethoxylase, the rate‑limiting enzyme
+              of this pathway<sup>[5]</sup>. Accordingly, we established a biosensor‑assisted
+              directed‑evolution system for high‑throughput mutant screening.
+            </p>
+          </div>
+
+          <div class="doc-reveal">
+            <p>
+              The experimental design is shown in the figure. We constructed the ODM mutant library via
+              error‑prone PCR and co‑expressed ODM variants with the PobR‑based whole‑cell biosensor
+              previously optimized in our lab to assemble a dual‑plasmid system. Candidate mutants were
+              then enriched through biosensor‑based screening. Enzyme activity was quantified by HPLC,
+              and positive mutants were further subjected to mutation‑site analysis and molecular
+              docking.
+            </p>
+          </div>
+
+          <figure class="figure figure--normal doc-reveal">
+            <div class="figure-frame">
+              <img src="../static/img/design/ds_m2_1.png" alt="" width="1726" height="796" loading="lazy" decoding="async" />
+            </div>
+          </figure>
+
+          <h3 id="m2-part2">Part 2 Working principle of the PobR biosensor</h3>
+
+          <div class="doc-reveal">
+            <p>
+              We constructed a biosensor based on this screening logic:High‑activity ODM catalyzes the
+              conversion of VA into abundant 4‑HB. 4‑HB binds PobR, triggers its conformational change
+              and releases PobR from the promoter to relieve transcriptional repression. The strain
+              then expresses <em>mCherry</em> and <em>cmr</em>, generating fluorescence and acquiring
+              chloramphenicol resistance, which enables high‑throughput screening for high‑activity
+              ODM mutants.
+            </p>
+          </div>
+
+          <figure class="figure figure--normal doc-reveal">
+            <div class="figure-frame">
+              <img src="../static/img/design/ds_m2_2.gif" alt="" width="1138" height="640" loading="lazy" decoding="async" />
+            </div>
+          </figure>
+        </section>
+
+        
+        <section class="doc-section" id="module-3">
+          <header class="doc-section-head doc-reveal">
+            <span class="doc-section-num" aria-hidden="true">03</span>
+            <div class="doc-section-headtext">
+              <h2>Module 3: From VA to Pyr--Toward a Fully Green Route</h2>
+            </div>
+          </header>
+
+          <h3 id="m3-part1">Part 1 Biosensor Strain and Pathway Establishment</h3>
+
+          <div class="doc-reveal">
+            <p>
+              An <em>E. coli</em> BW‑derived biosensor strain BW<em>ΔgldAΔmaeBΔpykF</em> was constructed
+              as a growth‑coupled whole‑cell biosensor, in which three pyruvate‑synthesis‑related
+              genes, <em>gldA</em>, <em>maeB</em> and <em>pykF</em>, were deleted. Deletion of these
+              three endogenous genes renders the strain strictly dependent on exogenous pyruvate for
+              cell growth. The vanillic‑acid‑to‑pyruvate enzymatic cascade containing
+              <em>vanAB</em>, <em>aroY</em> and other genes was split into two plasmids and
+              co‑transformed into the biosensor strain, coupling cell growth to pyruvate yield from
+              the heterologous pathway.
+            </p>
+          </div>
+
+          <figure class="figure figure--normal doc-reveal">
+            <div class="figure-frame">
+              <img src="../static/img/design/ds_m3_1.gif" alt="" width="1184" height="640" loading="lazy" decoding="async" />
+            </div>
+          </figure>
+
+          <h3 id="m3-part2">Part 2 RBS Library Screening and Quantitative Validation</h3>
+
+          <div class="doc-reveal">
+            <p>
+              To improve pyruvate production, a random RBS mutation library was constructed for the
+              downstream functional regions of the pathway to optimize protein translation. The
+              biosensor was used for high‑throughput screening to obtain superior mutants. HPLC was
+              adopted for quantitative evaluation of pyruvate‑producing capacity.
+            </p>
+          </div>
+
+          <figure class="figure figure--normal doc-reveal">
+            <div class="figure-frame">
+              <img src="../static/img/design/ds_m3_2.png" alt="" width="1613" height="536" loading="lazy" decoding="async" />
+            </div>
+          </figure>
+        </section>
+
+        
+        <section class="doc-section" id="references">
+          <header class="doc-section-head doc-reveal">
+            <div class="doc-section-headtext">
+              <h2>References</h2>
+            </div>
+          </header>
+
+          <div class="doc-reveal">
+            <p>
+              [1]Johnson, C. W. &amp; Beckham, G. T. Aromatic catabolic pathway selection for optimal
+              production of Pyr and lactate from lignin. <em>Metab. Eng.</em> 28, 240-247 (2015). DOI:
+              <a href="https://doi.org/10.1016/j.ymben.2015.01.005" target="_blank" rel="noopener">https://doi.org/10.1016/j.ymben.2015.01.005</a><br />
+              [2]Guo, Y., Alvigini, L., Trajkovic, M., et al. Structure- and computational-aided
+              engineering of an oxidase to produce isoeugenol from a lignin-derived compound. <em>Nat.
+              Commun.</em> 13, 7195 (2022). DOI: <a href="https://doi.org/10.1038/s41467-022-34912-3" target="_blank" rel="noopener">https://doi.org/10.1038/s41467-022-34912-3</a><br />
+              [3]De Simone, M., Alvigini, L., Alonso-Cotchico, L., et al. Rationally guided improvement
+              of NOV1 dioxygenase for the conversion of lignin-derived isoeugenol to vanillin.
+              <em>Biochemistry.</em> 62, 419-428 (2023). DOI: <a href="https://doi.org/10.1021/acs.biochem.2c00168" target="_blank" rel="noopener">https://doi.org/10.1021/acs.biochem.2c00168</a><br />
+              [4]Xu, L., Sethupathy, S., Liang, Z., et al. NAD⁺ regeneration-coupled enzymatic
+              bioconversion of lignin-derived vanillin into VA: A cleaner production approach. <em>Ind.
+              Crops Prod.</em> 222, 119921 (2024). DOI: <a href="https://doi.org/10.1016/j.indcrop.2024.119921" target="_blank" rel="noopener">https://doi.org/10.1016/j.indcrop.2024.119921</a><br />
+              [5]Stucki, A., Vallapurackal, J., Ward, T. R. &amp; Dittrich, P. S. Droplet microfluidics
+              and directed evolution of enzymes: An intertwined journey. <em>Angew. Chem. Int. Ed.</em>
+              60, 24368-24387 (2021). DOI: <a href="https://doi.org/10.1002/anie.202016154" target="_blank" rel="noopener">https://doi.org/10.1002/anie.202016154</a><br />
+              [6]Panwar, J., Autour, A. &amp; Merten, C. A. Design and construction of a microfluidics
+              workstation for high-throughput multi-wavelength fluorescence and transmittance activated
+              droplet analysis and sorting. <em>Nat. Protoc.</em> 18, 1090-1136 (2023). DOI:
+              <a href="https://doi.org/10.1038/s41596-022-00796-2" target="_blank" rel="noopener">https://doi.org/10.1038/s41596-022-00796-2</a><br />
+              [7]Shende, V. V., Bauman, K. D. &amp; Moore, B. S. The shikimate pathway: Gateway to
+              metabolic diversity. <em>Nat. Prod. Rep.</em> 41, 604-648 (2024). DOI:
+              <a href="https://doi.org/10.1039/D3NP00037K" target="_blank" rel="noopener">https://doi.org/10.1039/D3NP00037K</a>
+            </p>
+          </div>
+        </section>
+
+      </article>
+    </div>
+  </main>
+
+    <footer>
+    <div class="footer-grid">
+      <div class="footer-logos">
+        <img src="../static/teamlogo.png" alt="NEFU-China Team Logo" class="footer-teamlogo" />
+      </div>
+      <div class="footer-col footer-about">
+        <h4>About us</h4>
+        <p>This team is composed of enthusiastic students from five different colleges and various majors. To spy out the secrets of directed evolution, a group of beginners are looking forward to creating extraordinary experiences and we did it.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quicklinks</h4>
+        <ul>
+          <li><a href="background.html">Background</a></li>
+          <li><a href="design.html">Design</a></li>
+          <li><a href="results.html">Results</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact info</h4>
+        <ul>
+          <li>Address : Northeast Forestry University, Harbin, Heilongjiang 150040, P. R. China</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>iDEC-2026 NEFU-China</p>
+    </div>
+  </footer>
+
+  <script src="../js/loader.js"></script>
+  <script src="../js/particles.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/article.js"></script>
+</body>
+</html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEFU-China iDEC 2026 | Notebook</title>
+  <meta name="description" content="Month-by-month wet-lab and dry-lab notebook of the NEFU-China iDEC 2026 project, with links to each monthly notebook PDF." />
+
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/navigation.css" />
+  <link rel="stylesheet" href="../css/loader.css" />
+  <link rel="stylesheet" href="../css/notebook.css" />
+</head>
+<body>
+
+  <canvas id="particles-canvas"></canvas>
+  <div class="bg-gradient-layer" aria-hidden="true"></div>
+
+  <div id="loader" class="loader" role="status" aria-label="Loading">
+    <div class="loader-content">
+      <div class="loader-art">
+        <div class="loader-sticker">
+          <img class="loader-dog" data-phase="0" src="../static/img/loader/loader-0.svg" alt="Loading in progress" decoding="async" />
+          <img class="loader-dog" data-phase="25" src="../static/img/loader/loader-25.svg" alt="" decoding="async" />
+          <img class="loader-dog" data-phase="50" src="../static/img/loader/loader-50.svg" alt="" decoding="async" />
+          <img class="loader-dog" data-phase="75" src="../static/img/loader/loader-75.svg" alt="" decoding="async" />
+          <img class="loader-dog" data-phase="100" src="../static/img/loader/loader-100.svg" alt="" decoding="async" />
+        </div>
+      </div>
+
+      <div class="loader-text">
+        LOADING
+        <span class="loader-text-dots">
+          <span></span><span></span><span></span>
+        </span>
+      </div>
+      <div class="loader-brand">iDEC | 2026</div>
+    </div>
+  </div>
+
+  <nav id="navbar" class="navbar">
+    <div class="navbar-glass"></div>
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-brand">
+        <div class="nav-logo">
+          <img src="../static/teamlogo.png" alt="NEFU-China Team Logo" class="nav-logo-img" />
+        </div>
+        <div class="nav-brand-text">
+          <span class="nav-brand-name">NEFU-China</span>
+          <span class="nav-brand-sub">iDEC 2026</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li class="nav-link-item" data-nav="home">
+          <a href="../index.html" class="nav-link">Home</a>
+        </li>
+        <li class="nav-link-item" data-nav="team"><a href="../team/member.html" class="nav-link">Team</a></li>
+        <li class="nav-link-item has-dropdown" data-nav="project">
+          <a class="nav-link" role="button" tabindex="0">
+            Project
+            <svg class="nav-link-icon" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <div class="nav-dropdown">
+            <a href="../project/background.html" class="nav-dropdown-item">Background</a>
+            <a href="../project/design.html" class="nav-dropdown-item">Design</a>
+            <a href="../project/results.html" class="nav-dropdown-item">Results</a>
+            <a href="../static/document/report.pdf" target="_blank" class="nav-dropdown-item">Report</a>
+            <a href="../static/document/supplementary-information.pdf" target="_blank" class="nav-dropdown-item">Supplementary Information</a>
+            <a href="../project/hardware.html" class="nav-dropdown-item">Hardware</a>
+          </div>
+        </li>
+        <li class="nav-link-item has-dropdown" data-nav="document">
+          <a class="nav-link" role="button" tabindex="0">
+            Document
+            <svg class="nav-link-icon" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <div class="nav-dropdown">
+            <a href="notebook.html" class="nav-dropdown-item">Notebook</a>
+            <a href="safety.html" class="nav-dropdown-item">Safety</a>
+            <a href="protocol.html" class="nav-dropdown-item">Protocol</a>
+          </div>
+        </li>
+      </ul>
+
+      <button id="navToggle" class="nav-toggle" aria-label="Toggle menu">
+        <div class="nav-toggle-icon">
+          <span></span><span></span><span></span>
+        </div>
+      </button>
+    </div>
+    <div class="nav-scroll-indicator"></div>
+  </nav>
+
+  <div id="mobileNav" class="mobile-nav">
+    <div class="mobile-nav-section" data-section="home">
+      <a href="../index.html" class="mobile-nav-top">Home</a>
+    </div>
+    <a href="../team/member.html" class="mobile-nav-top">Team</a>
+    <div class="mobile-nav-section" data-section="project">
+      <button class="mobile-nav-head" type="button" aria-expanded="false">
+        <span class="mobile-nav-title">Project</span>
+        <svg class="mobile-nav-chevron" viewBox="0 0 16 16" fill="none">
+          <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="mobile-nav-sublist">
+        <a href="../project/background.html" class="mobile-nav-link">Background</a>
+        <a href="../project/design.html" class="mobile-nav-link">Design</a>
+        <a href="../project/results.html" class="mobile-nav-link">Results</a>
+        <a href="../static/document/report.pdf" target="_blank" class="mobile-nav-link">Report</a>
+        <a href="../static/document/supplementary-information.pdf" target="_blank" class="mobile-nav-link">Supplementary Information</a>
+        <a href="../project/hardware.html" class="mobile-nav-link">Hardware</a>
+      </div>
+    </div>
+    <div class="mobile-nav-section" data-section="document">
+      <button class="mobile-nav-head" type="button" aria-expanded="false">
+        <span class="mobile-nav-title">Document</span>
+        <svg class="mobile-nav-chevron" viewBox="0 0 16 16" fill="none">
+          <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="mobile-nav-sublist">
+        <a href="notebook.html" class="mobile-nav-link">Notebook</a>
+        <a href="safety.html" class="mobile-nav-link">Safety</a>
+        <a href="protocol.html" class="mobile-nav-link">Protocol</a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <header class="page-hero-banner">
+      <div class="nb-wrap" style="padding-top: calc(var(--nav-h) + clamp(28px, 4vw, 56px)); padding-bottom: clamp(48px, 6vw, 88px);">
+        <h1 class="nb-title reveal" style="margin-bottom: 0;">Lab Notebook Timeline</h1>
+      </div>
+    </header>
+
+    <div class="nb-wrap">
+      <div class="timeline">
+
+        
+        <article class="timeline-item reveal">
+          <span class="timeline-node" aria-hidden="true"></span>
+          <div class="timeline-month">
+            <div class="m-name">May</div>
+            <div class="m-year">2026</div>
+          </div>
+          <div class="nb-card">
+            <div class="entry-group entry--wetlab">
+              <div class="entry-head">
+                <span class="entry-tag entry-tag--wetlab">Wetlab</span>
+              </div>
+              <div class="entry-body">
+                <p><strong>Goals:</strong> To construct vdh-nox recombinant plasmid and characterize enzyme-catalyzed conversion of 4-propylguaiacol, build ODM mutant library via error-prone-PCR and characterize the PobR biosensor, and assemble vanillic-acid-degrading pathway plasmids for subsequent whole-cell catalytic validation.</p>
+              </div>
+              <a class="btn btn-primary jump-btn" href="../static/document/notebook/notebookOfMay.pdf" target="_blank" rel="noopener">
+                <svg class="btn-ico" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M5 2.5h7L17 7v10.5H5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                  <path d="M12 2.5V7h5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                  <path d="M7.5 11h6M7.5 14h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+                View Wetlab Notebook
+              </a>
+            </div>
+            <div class="entry-group entry--drylab">
+              <div class="entry-head">
+                <span class="entry-tag entry-tag--drylab">Drylab</span>
+              </div>
+              <div class="entry-body">
+                <p><strong>Goals:</strong> To construct the droplet-generation module and the optical breadboard, achieve stable, continuous, and size-tunable droplet generation, and carry out preliminary fluorescence-detection validation using blank chips, the pure oil phase, and droplets; also to address non-uniform droplet size, chip clogging, and the weak signal of single-cell encapsulation.</p>
+              </div>
+              <a class="btn btn-primary jump-btn" href="../static/document/notebook/notebookOfMayDryLab.pdf" target="_blank" rel="noopener">
+                <svg class="btn-ico" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M5 2.5h7L17 7v10.5H5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                  <path d="M12 2.5V7h5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                  <path d="M7.5 11h6M7.5 14h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+                View Drylab Notebook
+              </a>
+            </div>
+          </div>
+        </article>
+
+        
+        <article class="timeline-item reveal">
+          <span class="timeline-node" aria-hidden="true"></span>
+          <div class="timeline-month">
+            <div class="m-name">June</div>
+            <div class="m-year">2026</div>
+          </div>
+          <div class="nb-card">
+            <div class="entry-group entry--wetlab">
+              <div class="entry-head">
+                <span class="entry-tag entry-tag--wetlab">Wetlab</span>
+              </div>
+              <div class="entry-body">
+                <p><strong>Goals:</strong> To construct vdh-nox recombinant plasmids and characterize 4-propylguaiacol biocatalysis, build ODM error-prone mutant library and establish 4-HB biosensor together with chloramphenicol-detection system, and verify vanillic-acid-degrading pathway via pyruvate-sensor assay.</p>
+              </div>
+              <a class="btn btn-primary jump-btn" href="../static/document/notebook/notebookOfJune.pdf" target="_blank" rel="noopener">
+                <svg class="btn-ico" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M5 2.5h7L17 7v10.5H5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                  <path d="M12 2.5V7h5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                  <path d="M7.5 11h6M7.5 14h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+                View Wetlab Notebook
+              </a>
+            </div>
+            <div class="entry-group entry--drylab">
+              <div class="entry-head">
+                <span class="entry-tag entry-tag--drylab">Drylab</span>
+              </div>
+              <div class="entry-body">
+                <p><strong>Goals:</strong> To build and validate the detection-and-sorting signal chain (PMT, comparator, FPGA, function generator, high-voltage amplifier, and DEP electrodes), complete the optical-path modification so that the PMT and camera can work simultaneously, and carry out the first droplet-sorting trial.</p>
+              </div>
+              <a class="btn btn-primary jump-btn" href="../static/document/notebook/notebookOfJuneDryLab.pdf" target="_blank" rel="noopener">
+                <svg class="btn-ico" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M5 2.5h7L17 7v10.5H5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                  <path d="M12 2.5V7h5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                  <path d="M7.5 11h6M7.5 14h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+                View Drylab Notebook
+              </a>
+            </div>
+          </div>
+        </article>
+
+        
+        <article class="timeline-item reveal">
+          <span class="timeline-node" aria-hidden="true"></span>
+          <div class="timeline-month">
+            <div class="m-name">July</div>
+            <div class="m-year">2026</div>
+          </div>
+          <div class="nb-card">
+            <div class="entry-group entry--wetlab">
+              <div class="entry-head">
+                <span class="entry-tag entry-tag--wetlab">Wetlab</span>
+              </div>
+              <div class="entry-body">
+                <p><strong>Goals:</strong> To construct progo-nov1f recombinant plasmid, verify protein expression and whole-cell catalysis for 4-PG bioconversion, rebuild the pobR biosensor vector, and characterize the vanillic-acid-degrading pathway with pyruvate sensor.</p>
+              </div>
+              <a class="btn btn-primary jump-btn" href="../static/document/notebook/notebookOfJuly.pdf" target="_blank" rel="noopener">
+                <svg class="btn-ico" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M5 2.5h7L17 7v10.5H5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                  <path d="M12 2.5V7h5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                  <path d="M7.5 11h6M7.5 14h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+                View Wetlab Notebook
+              </a>
+            </div>
+            <div class="entry-group entry--drylab">
+              <div class="entry-head">
+                <span class="entry-tag entry-tag--drylab">Drylab</span>
+              </div>
+              <div class="entry-body">
+                <p><strong>Goals:</strong> To optimize the droplet-generation chip against clogging through 0.22 um filtration and widened channels, complete the optical modification using a 700 nm LED, an ND filter, and a 535 nm filter, confirm the sorting function and the high-voltage amplifier model, and introduce the CH297 photon counter to improve narrow-pulse acquisition.</p>
+              </div>
+              <a class="btn btn-primary jump-btn" href="../static/document/notebook/notebookOfJulyDryLab.pdf" target="_blank" rel="noopener">
+                <svg class="btn-ico" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M5 2.5h7L17 7v10.5H5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                  <path d="M12 2.5V7h5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                  <path d="M7.5 11h6M7.5 14h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+                View Drylab Notebook
+              </a>
+            </div>
+          </div>
+        </article>
+
+        
+        <article class="timeline-item reveal">
+          <span class="timeline-node" aria-hidden="true"></span>
+          <div class="timeline-month">
+            <div class="m-name">August</div>
+            <div class="m-year">2026</div>
+          </div>
+          <div class="nb-card">
+            <div class="entry-group entry--wetlab">
+              <div class="entry-head">
+                <span class="entry-tag entry-tag--wetlab">Wetlab</span>
+              </div>
+              <div class="entry-body">
+                <p><strong>Goals:</strong> To repeatedly optimize whole-cell catalytic conditions for 4-PG conversion, complete large-scale ODM mutant library construction and establish biosensor-based screening system, and further validate full-pathway pyruvate-producing performance.</p>
+              </div>
+              <a class="btn btn-primary jump-btn" href="../static/document/notebook/notebookOfAugust.pdf" target="_blank" rel="noopener">
+                <svg class="btn-ico" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M5 2.5h7L17 7v10.5H5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                  <path d="M12 2.5V7h5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                  <path d="M7.5 11h6M7.5 14h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+                View Wetlab Notebook
+              </a>
+            </div>
+            <div class="entry-group entry--drylab">
+              <div class="entry-head">
+                <span class="entry-tag entry-tag--drylab">Drylab</span>
+              </div>
+              <div class="entry-body">
+                <p><strong>Goals:</strong> To validate dielectrophoretic (DEP) sorting using smaller droplets and a narrowed laser detection gate, complete fluorescence discrimination among induced, uninduced, and background samples, and perform end-to-end system latency tests.</p>
+              </div>
+              <a class="btn btn-primary jump-btn" href="../static/document/notebook/notebookOfAugustDryLab.pdf" target="_blank" rel="noopener">
+                <svg class="btn-ico" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M5 2.5h7L17 7v10.5H5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                  <path d="M12 2.5V7h5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                  <path d="M7.5 11h6M7.5 14h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+                View Drylab Notebook
+              </a>
+            </div>
+          </div>
+        </article>
+
+        
+        <article class="timeline-item reveal">
+          <span class="timeline-node" aria-hidden="true"></span>
+          <div class="timeline-month">
+            <div class="m-name">September</div>
+            <div class="m-year">2026</div>
+          </div>
+          <div class="nb-card">
+            <div class="entry-group entry--wetlab">
+              <div class="entry-head">
+                <span class="entry-tag entry-tag--wetlab">Wetlab</span>
+              </div>
+              <div class="entry-body">
+                <p><strong>Goals:</strong> To construct and test vdh-nox-related plasmids for 4-propylguaiacol-to-vanillic-acid bioconversion, screen high-activity odm mutants with site identification, verify pyruvate-producing vanillic-acid-degrading pathway and build its RBS mutant library.</p>
+              </div>
+              <a class="btn btn-primary jump-btn" href="../static/document/notebook/notebookOfSeptember.pdf" target="_blank" rel="noopener">
+                <svg class="btn-ico" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M5 2.5h7L17 7v10.5H5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                  <path d="M12 2.5V7h5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                  <path d="M7.5 11h6M7.5 14h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+                View Wetlab Notebook
+              </a>
+            </div>
+            <div class="entry-group entry--drylab">
+              <div class="entry-head">
+                <span class="entry-tag entry-tag--drylab">Drylab</span>
+              </div>
+              <div class="entry-body">
+                <p><strong>Goals:</strong> To validate sorting stability through 1 Hz gate-cycle switching, and complete the mCherry-adapted optical-path modification so that the downstream detection, droplet identification, and sorting logic can be reused without change.</p>
+              </div>
+              <a class="btn btn-primary jump-btn" href="../static/document/notebook/notebookOfSeptemberDryLab.pdf" target="_blank" rel="noopener">
+                <svg class="btn-ico" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M5 2.5h7L17 7v10.5H5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                  <path d="M12 2.5V7h5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                  <path d="M7.5 11h6M7.5 14h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+                View Drylab Notebook
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      
+      <section class="nb-download reveal" aria-label="Download videos">
+        <div class="nb-download-body">
+          <p>Click to download all videos mentioned in the dry lab notebook.</p>
+        </div>
+        <a class="btn btn-primary nb-download-btn" href="../static/document/notebook/video.zip" download rel="noopener" aria-label="Download videos (ZIP)">
+          <svg class="btn-ico" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M10 3v9m0 0l-3.5-3.5M10 12l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4 15v1.5A1.5 1.5 0 005.5 18h9a1.5 1.5 0 001.5-1.5V15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-logos">
+        <img src="../static/teamlogo.png" alt="NEFU-China Team Logo" class="footer-teamlogo" />
+      </div>
+      <div class="footer-col footer-about">
+        <h4>About us</h4>
+        <p>This team is composed of enthusiastic students from five different colleges and various majors. To spy out the secrets of directed evolution, a group of beginners are looking forward to creating extraordinary experiences and we did it.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quicklinks</h4>
+        <ul>
+          <li><a href="../project/background.html">Background</a></li>
+          <li><a href="../project/design.html">Design</a></li>
+          <li><a href="../project/results.html">Results</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact info</h4>
+        <ul>
+          <li>Address : Northeast Forestry University, Harbin, Heilongjiang 150040, P. R. China</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>iDEC-2026 NEFU-China</p>
+    </div>
+  </footer>
+
+  <script src="../js/loader.js"></script>
+  <script src="../js/particles.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

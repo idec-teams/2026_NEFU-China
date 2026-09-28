@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEFU-China iDEC 2026 | Team</title>
+  <meta name="description" content="Meet the NEFU-China team behind the iDEC 2026 lignin degradation project." />
+
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/navigation.css" />
+  <link rel="stylesheet" href="../css/loader.css" />
+  <link rel="stylesheet" href="../css/team-carousel.css" />
+</head>
+<body>
+
+  <canvas id="particles-canvas"></canvas>
+  <div class="bg-gradient-layer" aria-hidden="true"></div>
+
+  <div id="loader" class="loader" role="status" aria-label="Loading">
+    <div class="loader-content">
+      <div class="loader-art">
+        <div class="loader-sticker">
+          <img class="loader-dog" data-phase="0" src="../static/img/loader/loader-0.svg" alt="Loading in progress" decoding="async" />
+          <img class="loader-dog" data-phase="25" src="../static/img/loader/loader-25.svg" alt="" decoding="async" />
+          <img class="loader-dog" data-phase="50" src="../static/img/loader/loader-50.svg" alt="" decoding="async" />
+          <img class="loader-dog" data-phase="75" src="../static/img/loader/loader-75.svg" alt="" decoding="async" />
+          <img class="loader-dog" data-phase="100" src="../static/img/loader/loader-100.svg" alt="" decoding="async" />
+        </div>
+      </div>
+
+      <div class="loader-text">
+        LOADING
+        <span class="loader-text-dots">
+          <span></span><span></span><span></span>
+        </span>
+      </div>
+      <div class="loader-brand">iDEC | 2026</div>
+    </div>
+  </div>
+
+  <nav id="navbar" class="navbar">
+    <div class="navbar-glass"></div>
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-brand">
+        <div class="nav-logo">
+          <img src="../static/teamlogo.png" alt="NEFU-China Team Logo" class="nav-logo-img" />
+        </div>
+        <div class="nav-brand-text">
+          <span class="nav-brand-name">NEFU-China</span>
+          <span class="nav-brand-sub">iDEC 2026</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li class="nav-link-item" data-nav="home">
+          <a href="../index.html" class="nav-link">Home</a>
+        </li>
+        <li class="nav-link-item" data-nav="team"><a href="member.html" class="nav-link">Team</a></li>
+        <li class="nav-link-item has-dropdown" data-nav="project">
+          <a class="nav-link" role="button" tabindex="0">
+            Project
+            <svg class="nav-link-icon" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <div class="nav-dropdown">
+            <a href="../project/background.html" class="nav-dropdown-item">Background</a>
+            <a href="../project/design.html" class="nav-dropdown-item">Design</a>
+            <a href="../project/results.html" class="nav-dropdown-item">Results</a>
+            <a href="../static/document/report.pdf" target="_blank" class="nav-dropdown-item">Report</a>
+            <a href="../static/document/supplementary-information.pdf" target="_blank" class="nav-dropdown-item">Supplementary Information</a>
+
+            <a href="../project/hardware.html" class="nav-dropdown-item">Hardware</a></div>
+        </li>
+        <li class="nav-link-item has-dropdown" data-nav="document">
+          <a class="nav-link" role="button" tabindex="0">
+            Document
+            <svg class="nav-link-icon" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <div class="nav-dropdown">
+            <a href="../document/notebook.html" class="nav-dropdown-item">Notebook</a>
+            <a href="../document/safety.html" class="nav-dropdown-item">Safety</a>
+            <a href="../document/protocol.html" class="nav-dropdown-item">Protocol</a>
+          </div>
+        </li>
+      </ul>
+
+      <button id="navToggle" class="nav-toggle" aria-label="Toggle menu">
+        <div class="nav-toggle-icon">
+          <span></span><span></span><span></span>
+        </div>
+      </button>
+    </div>
+    <div class="nav-scroll-indicator"></div>
+  </nav>
+
+  <div id="mobileNav" class="mobile-nav">
+    <div class="mobile-nav-section" data-section="home">
+      <a href="../index.html" class="mobile-nav-top">Home</a>
+    </div>
+    <a href="member.html" class="mobile-nav-top">Team</a>
+    <div class="mobile-nav-section" data-section="project">
+      <button class="mobile-nav-head" type="button" aria-expanded="false">
+        <span class="mobile-nav-title">Project</span>
+        <svg class="mobile-nav-chevron" viewBox="0 0 16 16" fill="none">
+          <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="mobile-nav-sublist">
+        <a href="../project/background.html" class="mobile-nav-link">Background</a>
+        <a href="../project/design.html" class="mobile-nav-link">Design</a>
+        <a href="../project/results.html" class="mobile-nav-link">Results</a>
+        <a href="../static/document/report.pdf" target="_blank" class="mobile-nav-link">Report</a>
+        <a href="../static/document/supplementary-information.pdf" target="_blank" class="mobile-nav-link">Supplementary Information</a>
+
+        <a href="../project/hardware.html" class="mobile-nav-link">Hardware</a></div>
+    </div>
+    <div class="mobile-nav-section" data-section="document">
+      <button class="mobile-nav-head" type="button" aria-expanded="false">
+        <span class="mobile-nav-title">Document</span>
+        <svg class="mobile-nav-chevron" viewBox="0 0 16 16" fill="none">
+          <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="mobile-nav-sublist">
+        <a href="../document/notebook.html" class="mobile-nav-link">Notebook</a>
+        <a href="../document/safety.html" class="mobile-nav-link">Safety</a>
+        <a href="../document/protocol.html" class="mobile-nav-link">Protocol</a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section class="team-hero">
+      <div class="container team-hero-head">
+        <div class="section-header reveal">
+          <h1 class="section-title">Our Team Members</h1>
+        </div>
+      </div>
+
+      
+      <div class="team-carousel reveal" aria-label="Team group photos">
+        <div class="team-carousel-track" id="teamCarouselTrack">
+          <img src="../static/img/team/group-1.jpg" alt="NEFU-China group photo 1" draggable="false" />
+          <img src="../static/img/team/group-2.jpg" alt="NEFU-China group photo 2" draggable="false" />
+          <img src="../static/img/team/group-3.jpg" alt="NEFU-China group photo 3" draggable="false" />
+          <img src="../static/img/team/group-4.jpg" alt="NEFU-China group photo 4" draggable="false" />
+          <img src="../static/img/team/group-5.jpg" alt="NEFU-China group photo 5" draggable="false" />
+          <img src="../static/img/team/group-1.jpg" alt="" aria-hidden="true" draggable="false" />
+          <img src="../static/img/team/group-2.jpg" alt="" aria-hidden="true" draggable="false" />
+          <img src="../static/img/team/group-3.jpg" alt="" aria-hidden="true" draggable="false" />
+          <img src="../static/img/team/group-4.jpg" alt="" aria-hidden="true" draggable="false" />
+          <img src="../static/img/team/group-5.jpg" alt="" aria-hidden="true" draggable="false" />
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+
+      
+      <section id="team-leader" class="section">
+        <h2 class="reveal" style="margin-bottom: var(--s-6);">Team Leader</h2>
+        <div class="members-grid">
+          <article class="member-card reveal">
+            <div class="member-photo">
+              <img src="../static/img/member/tyz.jpg" alt="Yuanzhong Tian" loading="lazy" />
+            </div>
+            <div class="member-body">
+              <h3 class="member-name">Yuanzhong Tian</h3>
+              <span class="member-role">Team Leader</span>
+              <p class="member-bio">Hi, I&rsquo;m Melody. My MBTI is ISTJ, a total &ldquo;chill person&rdquo;. I enjoy singing and binge&#8209;watching dramas in my spare time. Nice to meet you all!</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      
+      <section id="players" class="section">
+        <h2 class="reveal" style="margin-bottom: var(--s-6);">Player</h2>
+        <div class="members-grid">
+
+<article class="member-card reveal">
+            <div class="member-photo">
+              <img src="../static/img/member/pjy.jpg" alt="Junyu Pan" loading="lazy" />
+            </div>
+            <div class="member-body">
+              <h3 class="member-name">Junyu Pan</h3>
+              <span class="member-role">Group Leader</span>
+              <div class="member-bio-scroll">
+                <div class="member-bio-scroll-track">
+                  <p class="member-bio">I am a sophomore majoring in biomedical sciences, engaged in molecular&#8209;biology&#8209;related research. My research focuses on enzyme directed evolution, plasmid construction and whole&#8209;cell catalysis. I am experienced in molecular cloning, protein expression and purification, HPLC detection and data analysis, with rigorous attention to experimental details and troubleshooting.<br>
+                  I balance academic coursework and English training, building competence in academic English for future research output and further study. Goal&#8209;oriented and result&#8209;driven, I enjoy in&#8209;depth academic discussions and reflect on experimental performance. Within teams, I take practical responsibilities and cooperate to move projects forward. I aim to accumulate research experience and keep exploring in the field of biotransformation.</p>
+                  <p class="member-bio" aria-hidden="true">I am a sophomore majoring in biomedical sciences, engaged in molecular&#8209;biology&#8209;related research. My research focuses on enzyme directed evolution, plasmid construction and whole&#8209;cell catalysis. I am experienced in molecular cloning, protein expression and purification, HPLC detection and data analysis, with rigorous attention to experimental details and troubleshooting.<br>
+                  I balance academic coursework and English training, building competence in academic English for future research output and further study. Goal&#8209;oriented and result&#8209;driven, I enjoy in&#8209;depth academic discussions and reflect on experimental performance. Within teams, I take practical responsibilities and cooperate to move projects forward. I aim to accumulate research experience and keep exploring in the field of biotransformation.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+<article class="member-card reveal reveal-delay-1">
+            <div class="member-photo">
+              <img src="../static/img/member/xlw.jpg" alt="Luowei Xu" loading="lazy" />
+            </div>
+            <div class="member-body">
+              <h3 class="member-name">Luowei Xu</h3>
+              <span class="member-role">Group Leader</span>
+              <p class="member-bio">Hi, I&rsquo;m Xu Luowei🌿<br>
+              ENTJ&#8209;A Commander🔥 <br>
+              Aries ♈️<br>
+              Gui&#8209;shui energy💧<br>
+              Deep love for nature 💕<br>
+              Pursuit of breakthroughs and creative exploration 🚀<br>
+              Striving to turn inspiring visions into reality 💡</p>
+            </div>
+          </article>
+
+<article class="member-card reveal reveal-delay-2">
+            <div class="member-photo">
+              <img src="../static/img/member/wxy.jpg" alt="Xinying Wang" loading="lazy" />
+            </div>
+            <div class="member-body">
+              <h3 class="member-name">Xinying Wang</h3>
+              <span class="member-role">Player</span>
+              <div class="member-bio-scroll">
+                <div class="member-bio-scroll-track">
+                  <p class="member-bio">🧠professional overthinker<br>
+                  🔗habitual metaphor user<br>
+                  📝paranoid note-taker<br>
+                  💡resourceful problem-solver<br>
+                  🎙️impromptu interviewer<br>
+                  🫳prolific maker of chemically-competent cells<br>
+                  🥤meal-time hydrohomie<br>
+                  🍀certified four-leaf-clover hunter<br>
+                  <br>
+                  Mainly involved in:<br>
+                  plasmid construction, biosensor characterization &amp; assays,<br>
+                  mutant&#8209;library construction &amp; mutant screening 🧬</p>
+                  <p class="member-bio" aria-hidden="true">🧠professional overthinker<br>
+                  🔗habitual metaphor user<br>
+                  📝paranoid note-taker<br>
+                  💡resourceful problem-solver<br>
+                  🎙️impromptu interviewer<br>
+                  🫳prolific maker of chemically-competent cells<br>
+                  🥤meal-time hydrohomie<br>
+                  🍀certified four-leaf-clover hunter<br>
+                  <br>
+                  Mainly involved in:<br>
+                  plasmid construction, biosensor characterization &amp; assays,<br>
+                  mutant&#8209;library construction &amp; mutant screening 🧬</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+<article class="member-card reveal">
+            <div class="member-photo">
+              <img src="../static/img/member/wjz.jpg" alt="Jinze Wu" loading="lazy" />
+            </div>
+            <div class="member-body">
+              <h3 class="member-name">Jinze Wu</h3>
+              <span class="member-role">Player</span>
+              <div class="member-bio-scroll">
+                <div class="member-bio-scroll-track">
+                  <p class="member-bio">Hello everyone. My name is Wu Jinze. I come from Harbin, Heilongjiang Province. I am a student at the College of Life Science, Northeast Forestry University. My MBTI personality type is INFP. In my spare time, I enjoy listening to music and drawing. I am careful and meticulous. I have great patience when conducting experiments. When facing problems, I am willing to calm down and look up materials to find solutions.On our team, I work as part of the group. My core task is protein mutation screening.</p>
+                  <p class="member-bio" aria-hidden="true">Hello everyone. My name is Wu Jinze. I come from Harbin, Heilongjiang Province. I am a student at the College of Life Science, Northeast Forestry University. My MBTI personality type is INFP. In my spare time, I enjoy listening to music and drawing. I am careful and meticulous. I have great patience when conducting experiments. When facing problems, I am willing to calm down and look up materials to find solutions.On our team, I work as part of the group. My core task is protein mutation screening.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+<article class="member-card reveal reveal-delay-1">
+            <div class="member-photo">
+              <img src="../static/img/member/zj.jpg" alt="Jing Zhang" loading="lazy" />
+            </div>
+            <div class="member-body">
+              <h3 class="member-name">Jing Zhang</h3>
+              <span class="member-role">Player</span>
+              <div class="member-bio-scroll">
+                <div class="member-bio-scroll-track">
+                  <p class="member-bio">I am an ISFJ. I am a slow&#8209;warming person, but I can be really humorous once we get familiar with each other. In my spare time, I enjoy dancing and watching TV series. I am earnest and responsible in daily work. I tend to make detailed plans ahead of time. Good at teamwork, I always pursue high working efficiency. Besides, I am willing to listen to teammates&rsquo; opinions and try my best to offer help when my partners are in need.</p>
+                  <p class="member-bio" aria-hidden="true">I am an ISFJ. I am a slow&#8209;warming person, but I can be really humorous once we get familiar with each other. In my spare time, I enjoy dancing and watching TV series. I am earnest and responsible in daily work. I tend to make detailed plans ahead of time. Good at teamwork, I always pursue high working efficiency. Besides, I am willing to listen to teammates&rsquo; opinions and try my best to offer help when my partners are in need.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+<article class="member-card reveal reveal-delay-2">
+            <div class="member-photo">
+              <img src="../static/img/member/zsh.jpg" alt="Shuhan Zhang" loading="lazy" />
+            </div>
+            <div class="member-body">
+              <h3 class="member-name">Shuhan Zhang</h3>
+              <span class="member-role">Player</span>
+              <p class="member-bio">Hi～I&rsquo;m Judy from Team NEFU&#8209;China.<br>
+              In my free time, I enjoy dancing and travelling, and I love trying all kinds of new experiences. Funny enough, I was an INTJ, yet my recent MBTI result came out as ISTJ.I&rsquo;m still figuring out which one I really am🤗</p>
+            </div>
+          </article>
+
+<article class="member-card reveal">
+            <div class="member-photo">
+              <img src="../static/img/member/ljy.jpg" alt="Jiayi Liu" loading="lazy" />
+            </div>
+            <div class="member-body">
+              <h3 class="member-name">Jiayi Liu</h3>
+              <span class="member-role">Player</span>
+              <p class="member-bio">An INTP from NEFU-China2026 and a member of team 2——being responsible for all kinds of small experiments,who is keen on travelling,watching videos and dramas and various beverages🥤☕🧃🧋and cuisines🥟🍝🥘🍕🥗🍔🍟</p>
+            </div>
+          </article>
+
+<article class="member-card reveal reveal-delay-1">
+            <div class="member-photo">
+              <img src="../static/img/member/cyc.jpg" alt="Yuchen Cao" loading="lazy" />
+            </div>
+            <div class="member-body">
+              <h3 class="member-name">Yuchen Cao</h3>
+              <span class="member-role">Player</span>
+              <p class="member-bio">Hey everyone! 👋 I&#x27;m Elsie from team NEFU-China. As a total ENFP, I&#x27;m basically powered by movie marathons, good vibes (aka music 🎵), cute cats 🐱, and going on foodie adventures to hunt down the best eats. So thrilled to meet you all! ✨</p>
+            </div>
+          </article>
+
+<article class="member-card reveal reveal-delay-2">
+            <div class="member-photo">
+              <img src="../static/img/member/cn.jpg" alt="Nuo Chen" loading="lazy" />
+            </div>
+            <div class="member-body">
+              <h3 class="member-name">Nuo Chen</h3>
+              <span class="member-role">Player</span>
+              <p class="member-bio">In my spare time, I enjoy listening to music.</p>
+            </div>
+          </article>
+
+<article class="member-card reveal">
+            <div class="member-photo">
+              <img src="../static/img/member/dxt.jpg" alt="Xintian Dong" loading="lazy" />
+            </div>
+            <div class="member-body">
+              <h3 class="member-name">Xintian Dong</h3>
+              <span class="member-role">Player</span>
+              <p class="member-bio">I am a student from China. My name is Xintian Dong. I am passionate about biology  and enjoy exploring how directed evolution can solve real-world problems.</p>
+            </div>
+          </article>
+
+<article class="member-card reveal reveal-delay-1">
+            <div class="member-photo">
+              <img src="../static/img/member/ryj.jpg" alt="Yijing Ren" loading="lazy" />
+            </div>
+            <div class="member-body">
+              <h3 class="member-name">Yijing Ren</h3>
+              <span class="member-role">Player</span>
+              <p class="member-bio">Hello everyone, my name is YiJing Ren. My MBTI type is ISTJ. I enjoy reading and playing the piano. I&rsquo;m very glad to meet all of you.</p>
+            </div>
+          </article>
+
+<article class="member-card reveal reveal-delay-2">
+            <div class="member-photo">
+              <img src="../static/img/member/srq.jpg" alt="Riqin Su" loading="lazy" />
+            </div>
+            <div class="member-body">
+              <h3 class="member-name">Riqin Su</h3>
+              <span class="member-role">Player</span>
+              <p class="member-bio">Hi, I&rsquo;m Riqin Su. I am a Mongolian from Inner Mongolia. I&rsquo;m very glad to take part in the IDEC international competition, and I hope to visit the University of Cambridge.</p>
+            </div>
+          </article>
+
+<article class="member-card reveal">
+            <div class="member-photo">
+              <img src="../static/img/member/ljh.jpg" alt="Jiheng Lv" loading="lazy" />
+            </div>
+            <div class="member-body">
+              <h3 class="member-name">Jiheng Lyu</h3>
+              <span class="member-role">Group Leader</span>
+              <p class="member-bio">Hello, I&#x27;m Randolph. As an ISTJ biotechnology student, I work as a wet&#8209;lab member. I am detail&#8209;oriented and responsible for lab experiments. I love biological research and am glad to cooperate with teammates.</p>
+            </div>
+          </article>
+
+<article class="member-card reveal reveal-delay-1">
+            <div class="member-photo">
+              <img src="../static/img/member/yc.jpg" alt="Cheng Yuan" loading="lazy" />
+            </div>
+            <div class="member-body">
+              <h3 class="member-name">Cheng Yuan</h3>
+              <span class="member-role">Player</span>
+              <p class="member-bio">Hi, I&#x27;m Yuan Cheng. I work on microfluidics in the Lab</p>
+            </div>
+          </article>
+
+<article class="member-card reveal reveal-delay-2">
+            <div class="member-photo">
+              <img src="../static/img/member/mzr.jpg" alt="Zhengrui Ma" loading="lazy" />
+            </div>
+            <div class="member-body">
+              <h3 class="member-name">Zhengrui Ma</h3>
+              <span class="member-role">Player</span>
+              <p class="member-bio">I&#x27;m Zhengrui Ma, a INFP , work on wiki building.</p>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      
+      <section id="mentor" class="section">
+        <h2 class="reveal" style="margin-bottom: var(--s-6);">Mentor</h2>
+        <div class="members-grid">
+          <article class="member-card member-card--mentor reveal">
+            <div class="member-photo">
+              <img src="../static/img/member/gzj.jpg" alt="Zhengjiao Gao" loading="lazy" />
+            </div>
+            <div class="member-body">
+              <h3 class="member-name">Zhengjiao Gao</h3>
+              <span class="member-role">Mentor</span>
+              <div class="member-bio-scroll">
+                <div class="member-bio-scroll-track">
+                  <p class="member-bio">Zhengjiao Gao is a Ph.D. candidate in Biochemistry and Molecular Biology. Her research focuses on the high-value bioconversion of lignin-derived vanillic acid through the design and optimization of microbial cell factories using metabolic engineering and synthetic biology. She has published three academic papers and participated in several national and provincial research projects. She is a strong team player and is passionate about transforming innovative ideas into practical solutions.</p>
+                  <p class="member-bio" aria-hidden="true">Zhengjiao Gao is a Ph.D. candidate in Biochemistry and Molecular Biology. Her research focuses on the high-value bioconversion of lignin-derived vanillic acid through the design and optimization of microbial cell factories using metabolic engineering and synthetic biology. She has published three academic papers and participated in several national and provincial research projects. She is a strong team player and is passionate about transforming innovative ideas into practical solutions.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      
+      <section id="supervisor" class="section">
+        <h2 class="reveal" style="margin-bottom: var(--s-6);">Supervisor</h2>
+        <div class="members-grid">
+          <article class="member-card member-card--mentor reveal">
+            <div class="member-photo">
+              <img src="../static/img/member/wpc.jpg" alt="Pengchao Wang" loading="lazy" />
+            </div>
+            <div class="member-body">
+              <h3 class="member-name">Pengchao Wang</h3>
+              <span class="member-role">Supervisor</span>
+              <p class="member-bio">Pengchao Wang, Ph.D<br>
+              The research area:Metabolic engineering for value-added chemicals, synthetic biology.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+    <footer>
+    <div class="footer-grid">
+      <div class="footer-logos">
+        <img src="../static/teamlogo.png" alt="NEFU-China Team Logo" class="footer-teamlogo" />
+      </div>
+      <div class="footer-col footer-about">
+        <h4>About us</h4>
+        <p>This team is composed of enthusiastic students from five different colleges and various majors. To spy out the secrets of directed evolution, a group of beginners are looking forward to creating extraordinary experiences and we did it.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quicklinks</h4>
+        <ul>
+          <li><a href="../project/background.html">Background</a></li>
+          <li><a href="../project/design.html">Design</a></li>
+          <li><a href="../project/results.html">Results</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact info</h4>
+        <ul>
+          <li>Address : Northeast Forestry University, Harbin, Heilongjiang 150040, P. R. China</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>iDEC-2026 NEFU-China</p>
+    </div>
+  </footer>
+
+  <script src="../js/loader.js"></script>
+  <script src="../js/particles.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/team-carousel.js"></script>
+</body>
+</html>

@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEFU-China iDEC 2026 | Hardware</title>
+  <meta name="description" content="Hardware: droplet microfluidic screening platform integrating fluorescence detection, photon counting, FPGA-controlled DEP sorting and self-developed control software." />
+
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/navigation.css" />
+  <link rel="stylesheet" href="../css/loader.css" />
+  <link rel="stylesheet" href="../css/article.css" />
+</head>
+<body>
+
+  <canvas id="particles-canvas"></canvas>
+  <div class="bg-gradient-layer" aria-hidden="true"></div>
+
+  <div id="loader" class="loader" role="status" aria-label="Loading">
+    <div class="loader-content">
+      <div class="loader-art">
+        <div class="loader-sticker">
+          <img class="loader-dog" data-phase="0" src="../static/img/loader/loader-0.svg" alt="Loading in progress" decoding="async" />
+          <img class="loader-dog" data-phase="25" src="../static/img/loader/loader-25.svg" alt="" decoding="async" />
+          <img class="loader-dog" data-phase="50" src="../static/img/loader/loader-50.svg" alt="" decoding="async" />
+          <img class="loader-dog" data-phase="75" src="../static/img/loader/loader-75.svg" alt="" decoding="async" />
+          <img class="loader-dog" data-phase="100" src="../static/img/loader/loader-100.svg" alt="" decoding="async" />
+        </div>
+      </div>
+
+      <div class="loader-text">
+        LOADING
+        <span class="loader-text-dots">
+          <span></span><span></span><span></span>
+        </span>
+      </div>
+      <div class="loader-brand">iDEC | 2026</div>
+    </div>
+  </div>
+
+  <nav id="navbar" class="navbar">
+    <div class="navbar-glass"></div>
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-brand">
+        <div class="nav-logo">
+          <img src="../static/teamlogo.png" alt="NEFU-China Team Logo" class="nav-logo-img" />
+        </div>
+        <div class="nav-brand-text">
+          <span class="nav-brand-name">NEFU-China</span>
+          <span class="nav-brand-sub">iDEC 2026</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li class="nav-link-item" data-nav="home">
+          <a href="../index.html" class="nav-link">Home</a>
+        </li>
+        <li class="nav-link-item" data-nav="team"><a href="../team/member.html" class="nav-link">Team</a></li>
+        <li class="nav-link-item has-dropdown" data-nav="project">
+          <a class="nav-link" role="button" tabindex="0">
+            Project
+            <svg class="nav-link-icon" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <div class="nav-dropdown">
+            <a href="background.html" class="nav-dropdown-item">Background</a>
+            <a href="design.html" class="nav-dropdown-item">Design</a>
+            <a href="results.html" class="nav-dropdown-item">Results</a>
+            <a href="../static/document/report.pdf" target="_blank" class="nav-dropdown-item">Report</a>
+            <a href="../static/document/supplementary-information.pdf" target="_blank" class="nav-dropdown-item">Supplementary Information</a>
+
+            <a href="hardware.html" class="nav-dropdown-item">Hardware</a></div>
+        </li>
+        <li class="nav-link-item has-dropdown" data-nav="document">
+          <a class="nav-link" role="button" tabindex="0">
+            Document
+            <svg class="nav-link-icon" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <div class="nav-dropdown">
+            <a href="../document/notebook.html" class="nav-dropdown-item">Notebook</a>
+            <a href="../document/safety.html" class="nav-dropdown-item">Safety</a>
+            <a href="../document/protocol.html" class="nav-dropdown-item">Protocol</a>
+          </div>
+        </li>
+      </ul>
+
+      <button id="navToggle" class="nav-toggle" aria-label="Toggle menu">
+        <div class="nav-toggle-icon">
+          <span></span><span></span><span></span>
+        </div>
+      </button>
+    </div>
+    <div class="nav-scroll-indicator"></div>
+  </nav>
+
+  <div id="mobileNav" class="mobile-nav">
+    <div class="mobile-nav-section" data-section="home">
+      <a href="../index.html" class="mobile-nav-top">Home</a>
+    </div>
+    <a href="../team/member.html" class="mobile-nav-top">Team</a>
+    <div class="mobile-nav-section" data-section="project">
+      <button class="mobile-nav-head" type="button" aria-expanded="false">
+        <span class="mobile-nav-title">Project</span>
+        <svg class="mobile-nav-chevron" viewBox="0 0 16 16" fill="none">
+          <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="mobile-nav-sublist">
+        <a href="background.html" class="mobile-nav-link">Background</a>
+        <a href="design.html" class="mobile-nav-link">Design</a>
+        <a href="results.html" class="mobile-nav-link">Results</a>
+        <a href="../static/document/report.pdf" target="_blank" class="mobile-nav-link">Report</a>
+        <a href="../static/document/supplementary-information.pdf" target="_blank" class="mobile-nav-link">Supplementary Information</a>
+
+        <a href="hardware.html" class="mobile-nav-link">Hardware</a></div>
+    </div>
+    <div class="mobile-nav-section" data-section="document">
+      <button class="mobile-nav-head" type="button" aria-expanded="false">
+        <span class="mobile-nav-title">Document</span>
+        <svg class="mobile-nav-chevron" viewBox="0 0 16 16" fill="none">
+          <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="mobile-nav-sublist">
+        <a href="../document/notebook.html" class="mobile-nav-link">Notebook</a>
+        <a href="../document/safety.html" class="mobile-nav-link">Safety</a>
+        <a href="../document/protocol.html" class="mobile-nav-link">Protocol</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="doc-page">
+
+    
+    <header class="doc-hero page-hero-banner">
+      <div class="doc-container">
+        <h1 class="doc-title">Hardware</h1>
+        <button class="doc-toc-toggle" type="button" aria-expanded="false" aria-controls="docToc">
+          Contents
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    
+    <div class="doc-layout doc-container">
+
+      <aside class="doc-toc" id="docToc" aria-label="Table of contents">
+        <nav>
+          <p class="doc-toc-label">On this page</p>
+          <ol class="doc-toc-list" id="docTocList"></ol>
+        </nav>
+      </aside>
+
+      
+      <article class="doc-article" id="docArticle" style="counter-reset: docfigure 3;">
+
+        
+        <section class="doc-section" id="part-1">
+          <header class="doc-section-head doc-reveal">
+            <span class="doc-section-num" aria-hidden="true">01</span>
+            <div class="doc-section-headtext">
+              <h2>Part 1:Background</h2>
+            </div>
+          </header>
+
+          <h3 id="hw-1-1">1.1 The Screening Challenge</h3>
+
+          <div class="doc-reveal">
+            <p>
+              Our directed-evolution target is the enzyme that catalyzes the O-demethylation of vanillic
+              acid (VA) to produce 4-hydroxybenzoic acid (4-HB). Improving this enzyme first requires
+              generating a large-scale mutant library and then identifying variants with higher catalytic
+              activity from the vast pool of candidates. The challenge lies not in generating diversity
+              but in rapidly finding rare, valuable variants among the enormous number of candidates. As
+              library size grows, the conventional clone-by-clone screening approach becomes
+              progressively less efficient.
+            </p>
+          </div>
+
+          <h3 id="hw-1-2">1.2 Limitations of Conventional Screening Methods</h3>
+
+          <div class="doc-reveal">
+            <p>
+              The conventional route involves test-tube screening followed by HPLC quantification of 4-HB:
+            </p>
+            <p>
+              Long screening cycles
+            </p>
+            <p>
+              High reagent consumption
+            </p>
+            <p>
+              Low effective throughput
+            </p>
+            <p>
+              This approach is not unusable; it simply lacks the throughput needed for large-scale mutant
+              libraries. The bottleneck grows with library size, so what limits the speed of directed
+              evolution is not the “generation of mutations” but the “screening” step.
+            </p>
+          </div>
+
+          <figure class="figure figure--normal doc-reveal">
+            <div class="figure-frame">
+              <img src="../static/img/hardware/hw_1.png" alt="" width="1079" height="438" loading="lazy" decoding="async" />
+            </div>
+          </figure>
+        </section>
+
+        
+        <section class="doc-section" id="part-2">
+          <header class="doc-section-head doc-reveal">
+            <span class="doc-section-num" aria-hidden="true">02</span>
+            <div class="doc-section-headtext">
+              <h2>Part 2:Design</h2>
+            </div>
+          </header>
+
+          <h3 id="hw-2-1">2.1 Droplet Microfluidics</h3>
+
+          <div class="doc-reveal">
+            <p>
+              The difficulty of directed evolution lies not in generating mutations but in rapidly
+              identifying highly active variants from a large pool of mutants. To overcome the
+              throughput limitations of test-tube screening and HPLC, we employ droplet microfluidics:
+              individual mutant cells are encapsulated into water-in-oil droplets, so that each droplet
+              becomes an independent microreactor carrying out the VA → 4-HB → CHA conversion in
+              parallel. PobR/mCherry fluorescence is then used to convert enzyme activity into a
+              measurable optical signal, with a photon detector reading each droplet in real time,
+              followed by dielectrophoretic high-throughput sorting of positive droplets. In this way,
+              “clone-by-clone chemical analysis” is transformed into “single-droplet fluorescence
+              sorting,” enabling selection of the best-performing mutant strains.
+            </p>
+          </div>
+
+          <figure class="figure figure--normal doc-reveal">
+            <div class="figure-frame">
+              <img src="../static/img/hardware/hw_2.png" alt="" width="1266" height="524" loading="lazy" decoding="async" />
+            </div>
+          </figure>
+
+          <h3 id="hw-2-2">2.2 Fluorescence Detection</h3>
+
+          <div class="doc-reveal">
+            <p>
+              We need fast, real-time readouts at the single-droplet level. Because 4-HB within a
+              droplet is not readily measurable by direct optical means, we convert the chemical signal
+              into a fluorescence signal that can be detected online: an intracellular PobR biosensor
+              senses 4-HB and in turn drives <em>mCherry</em> expression.
+            </p>
+            <p>
+              The origin of this information chain is the enzyme variant—cells encapsulated within
+              droplets use vanillic acid (VA) as the substrate and generate 4-HB through O-demethylation.
+              The higher the catalytic activity of the enzyme variant, the more 4-HB accumulates within
+              the               droplet and, ultimately, the stronger the mCherry fluorescence. The complete chain is:
+              enzyme variant → 4-HB production → PobR response → <em>mCherry</em> expression →
+              fluorescence intensity → sorting decision. A photomultiplier tube (PMT) combined with
+              photon counting converts the fluorescence of each droplet into an interpretable electrical
+              signal in real time.
+            </p>
+          </div>
+
+          <h3 id="hw-2-3">2.3 DEP Sorting</h3>
+
+          <div class="doc-reveal">
+            <p>
+              Detection alone is not sufficient. If positive droplets can be identified but not
+              automatically recovered, screening still requires manual intervention and throughput
+              remains limited. It is detection combined with automated sorting that constitutes a
+              complete high-throughput platform. We chose DEP because it acts on droplets through a
+              non-uniform electric field without the need for mechanical valves, thereby avoiding the
+              problems of mechanical inertia, pressure disturbance, and slow response. Detection and
+              sorting therefore form a closed loop from identification to recovery, allowing screening
+              to proceed without manual droplet-by-droplet handling.
+            </p>
+          </div>
+
+          <h3 id="hw-2-4">2.4 Overall System Architecture</h3>
+
+          <div class="doc-reveal">
+            <p>
+              The complete workflow is: cell suspension → droplet generation → incubation → reinjection
+              → fluorescence detection → signal processing → DEP sorting → collection/waste. Two
+              parallel pathways must be distinguished: the fluidic pathway transports droplets from the
+              generation chip to the detection region and then to the sorting junction (Figure A); the
+              electronic-signal pathway follows PMT → comparator/CH297 photon counter → FPGA → function
+              generator → high-voltage amplifier → DEP electrodes, converting each fluorescence event
+              into an electric field that alters the droplet trajectory (Figure B).
+            </p>
+          </div>
+
+          <figure class="figure figure--normal doc-reveal">
+            <div class="figure-frame">
+              <img src="../static/img/hardware/hw_3.png" alt="" width="777" height="812" loading="lazy" decoding="async" />
+            </div>
+          </figure>
+        </section>
+
+        
+        <section class="doc-section" id="part-3">
+          <header class="doc-section-head doc-reveal">
+            <span class="doc-section-num" aria-hidden="true">03</span>
+            <div class="doc-section-headtext">
+              <h2>Part 3:Result</h2>
+            </div>
+          </header>
+
+          <div class="doc-reveal">
+            <p>
+              To address the screening bottleneck created by large mutant libraries<sup>[25–26]</sup>, a
+              hardware-assisted microfluidic platform was constructed, integrating droplet generation,
+              fluorescence detection, photon counting, and dielectrophoretic (DEP)
+              sorting<sup>[27]</sup>.
+            </p>
+          </div>
+
+          <h3 id="hw-3-1">3.1 Construction and Functional Validation of the Microfluidic </h3>
+          <h4>Screening Platform</h4>
+
+          <div class="doc-reveal">
+            <p>
+              Bacterial suspensions were diluted, encapsulated into water-in-oil droplets, incubated for
+              16 h, and introduced into the detection and sorting stage
+              <strong><ins>(Figure 4A)</ins></strong>. A camera provided droplet imaging, whereas the
+              PMT converted fluorescence into photon counts. Signals were transferred through CH297 to
+              the computer, and sorting commands were delivered through PYNQ-Z2, the function generator
+              (AFG) and high-voltage amplifier (HVA) to the DEP electrodes
+              <strong><ins>(Figure 4B)</ins></strong>.
+            </p>
+            <p>
+              For eGFP detection, the optical path used 488 nm excitation with the indicated filters and
+              DM505 <strong><ins>(Figure 4C)</ins></strong>. FPGA counts increased linearly across seven
+              tested input frequencies (N = 16f, R² = 1.000; <strong><ins>Figure 4D</ins></strong>). In
+              100 end-to-end electrical tests,93 responses were successful; their latency was 25.359 ±
+              3.073 ms (mean ± SD; <strong><ins>Figure 4E</ins></strong>). eGFP samples showed repeated
+              high-count peaks and net counts near 1,000, whereas uninduced controls remained near the
+              lower baseline and about 150 net counts <strong><ins>(Figure 4F,4G)</ins></strong>. More
+              importantly, the eGFP reporter can be replaced with <em>mCherry</em>, enabling direct
+              integration of the platform with our biosensor-based screening workflow.
+            </p>
+          </div>
+
+          <figure class="figure-group doc-reveal">
+            <div class="figure-frame">
+              <div class="figure-grid">
+                <div class="figure-item">
+                  <img src="../static/img/hardware/hw_4.png" alt="" width="1267" height="744" loading="lazy" decoding="async" />
+                </div>
+              </div>
+            </div>
+            <figcaption>
+              <span class="figure-num"></span>
+              Workflow and functional validation of the microfluidic screening platform.
+              <strong>(A)</strong> Workflow from sample preparation to DEP sorting. <strong>(B)</strong>
+              Hardware architecture. <strong>(C)</strong> Optical configuration. <strong>(D)</strong>
+              FPGA counting response. <strong>(E)</strong> Electrical response latency.
+              <strong>(F)</strong> Photon-count traces. <strong>(G)</strong> Net photon-count
+              distributions.
+            </figcaption>
+          </figure>
+
+          <h3 id="hw-3-2">3.2 Low-Cost Hardware Integration and Self-Developed Control </h3>
+          <h4>Software</h4>
+
+          <div class="doc-reveal">
+            <p>
+              The physical platform was assembled and a dedicated control environment was developed
+              <strong><ins>(Figure 5A, 5B)</ins></strong>. The software contains camera observation, PMT
+              photon counting, PYNQ gate control and syringe-pump fluid delivery modules
+              <strong><ins>(Figure 5C–F)</ins></strong>. Photon counts are read through CH297, evaluated
+              using a threshold and hysteresis, and converted into HIGH/LOW commands for PYNQ; actuation
+              then proceeds through AFG, HVA and DEP.
+            </p>
+            <p>
+              Operational videos provided direct visual validation. Representative sorting frames at
+              1.507 s (HIGH) and 2.507 s (LOW) show periodic gate-state switching
+              <strong><ins>(Figure 5G)</ins></strong>, while frames at 0 and 1s show continuous droplet
+              formation <strong><ins>(Figure 5H)</ins></strong>.
+            </p>
+          </div>
+
+          <figure class="figure-group doc-reveal">
+            <div class="figure-frame">
+              <div class="figure-grid">
+                <div class="figure-item">
+                  <img src="../static/img/hardware/hw_5.png" alt="" width="1267" height="713" loading="lazy" decoding="async" />
+                </div>
+              </div>
+            </div>
+            <figcaption>
+              <span class="figure-num"></span>
+              Engineering implementation and operational demonstration.
+              <strong>(A,B)</strong> Device photographs. <strong>(C)</strong> Camera interface.
+              <strong>(D)</strong> PMT in1terface. <strong>(E)</strong> PYNQ interface.
+              <strong>(F)</strong> Pump interface. <strong>(G)</strong> HIGH/LOW switching frames.
+              <strong>(H)</strong> Droplet-generation frames.
+            </figcaption>
+          </figure>
+
+          <div class="doc-reveal">
+            <p>
+              The eight listed hardware categories had an estimated total cost of CNY 61,851
+              (approximately £6.9k), with a recorded development period of three months. The estimate
+              covers optics, imaging, detection, control and pumping hardware but excludes the PC, chips
+              and consumables. Modules were designed to be replaceable and upgradable, and the control
+              software and build guide are planned for public release through GitHub or another open
+              repository.
+            </p>
+          </div>
+
+          <div class="table-scroll doc-reveal">
+            <table>
+              <thead>
+                <tr>
+                  <th>Component</th>
+                  <th>Model</th>
+                  <th>Cost (GBP)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>HVA</td>
+                  <td>ATA-2081</td>
+                  <td>2,717.8</td>
+                </tr>
+                <tr>
+                  <td>Optics/optomechanics</td>
+                  <td>—</td>
+                  <td>2,218.8</td>
+                </tr>
+                <tr>
+                  <td>Syringe pump</td>
+                  <td>LSP02-3B</td>
+                  <td>741.8</td>
+                </tr>
+                <tr>
+                  <td>AFG</td>
+                  <td>DG1022Z</td>
+                  <td>389.7</td>
+                </tr>
+                <tr>
+                  <td>Camera</td>
+                  <td>MUS40M-G</td>
+                  <td>358.2</td>
+                </tr>
+                <tr>
+                  <td>PMT</td>
+                  <td>H10682</td>
+                  <td>281.9</td>
+                </tr>
+                <tr>
+                  <td>Photon counter</td>
+                  <td>CH297</td>
+                  <td>169.2</td>
+                </tr>
+                <tr>
+                  <td>FPGA</td>
+                  <td>PYNQ-Z2</td>
+                  <td>97.7</td>
+                </tr>
+                <tr>
+                  <td><strong>Total</strong></td>
+                  <td>—</td>
+                  <td><strong>6,975.0</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        
+        <section class="doc-section" id="part-4">
+          <header class="doc-section-head doc-reveal">
+            <span class="doc-section-num" aria-hidden="true">04</span>
+            <div class="doc-section-headtext">
+              <h2>Part 4: Supplementary Information</h2>
+            </div>
+          </header>
+
+          <h3 id="hw-table-1">Table 1 · Hardware</h3>
+
+          <div class="table-scroll doc-reveal">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Model/Specification</th>
+                  <th>Brand/Vendor</th>
+                  <th>Quantity</th>
+                  <th>Function</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Photomultiplier tube (PMT)</td>
+                  <td>H10682-110</td>
+                  <td>Hamamatsu</td>
+                  <td>1</td>
+                  <td>Converts droplet fluorescence into electrical pulses</td>
+                  <td>Positive pulse, ~10 ns typical pulse width, 50 ohm termination</td>
+                </tr>
+                <tr>
+                  <td>Photon counter</td>
+                  <td>CH297</td>
+                  <td>TUL</td>
+                  <td>1</td>
+                  <td>Gated PMT pulse counting</td>
+                  <td>GATE = Pmod B Pin1 (JB1_P, ZYNQ W14); Pmod logic I/O 3.3 V</td>
+                </tr>
+                <tr>
+                  <td>FPGA board</td>
+                  <td>PYNQ-Z2</td>
+                  <td>Lingrui Zhijie Electronics</td>
+                  <td>1</td>
+                  <td>High-speed comparison and waveform shaping (early design)</td>
+                  <td>Dual TLV3501; fixed threshold; 0.1 Hz-230 MHz; TTL output; +5 V single supply; later replaced by CH297</td>
+                </tr>
+                <tr>
+                  <td>High-speed comparator (early)</td>
+                  <td>TLV3501</td>
+                  <td>Texas Instruments</td>
+                  <td>1</td>
+                  <td>Analog pulse shaping</td>
+                  <td>Later replaced by CH297</td>
+                </tr>
+                <tr>
+                  <td>Function generator</td>
+                  <td>ATA-7010</td>
+                  <td>RIGOL</td>
+                  <td>1</td>
+                  <td>Generates the DEP trigger waveform</td>
+                  <td>DC-100 kHz; max output 2 kVp-p (+/-1 kVp); max output current 40 mAp; voltage gain x0-1000</td>
+                </tr>
+                <tr>
+                  <td>High-voltage amplifier</td>
+                  <td>ATA-2081</td>
+                  <td>Aigtek</td>
+                  <td>1</td>
+                  <td>DEP high-voltage amplification</td>
+                  <td>8 kHz, 300-500 Vpp; rated ~800 Vp-p</td>
+                </tr>
+                <tr>
+                  <td>Syringe pump</td>
+                  <td>LSP02-3B</td>
+                  <td>Ditron-tech</td>
+                  <td>1</td>
+                  <td>Aqueous/oil phase driving</td>
+                  <td>Dual channel, USB-RS485</td>
+                </tr>
+                <tr>
+                  <td>Scientific camera</td>
+                  <td>MUS40M-G</td>
+                  <td>OsCam Vision</td>
+                  <td>1</td>
+                  <td>Observation and video recording</td>
+                  <td>~720 x 540, ~328 fps</td>
+                </tr>
+                <tr>
+                  <td>Base optics (optical breadboard kit)</td>
+                  <td>488 nm laser, DM505, 535 nm emission filter, 660 nm LED, ND, etc.</td>
+                  <td>Oeabt</td>
+                  <td>1 set</td>
+                  <td>Fluorescence excitation/collection and bright-field observation</td>
+                  <td>LED-D1-524 and filter kit pending(mCherry )</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 id="hw-table-2">Table 2 · Consumables</h3>
+
+          <div class="table-scroll doc-reveal">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Model/Specification</th>
+                  <th>Brand/Vendor</th>
+                  <th>Quantity</th>
+                  <th>Function</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Droplet generation chip</td>
+                  <td>PDMS + glass</td>
+                  <td>Custom/FluidicLab</td>
+                  <td>As needed</td>
+                  <td>Generates water-in-oil droplets</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>DEP sorting chip</td>
+                  <td>PDMS + glass, sorting channel ~30 um</td>
+                  <td>Custom/FluidicLab</td>
+                  <td>As needed</td>
+                  <td>Fluorescence detection and sorting</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>Oil phase (fluorinated oil)</td>
+                  <td>5 mL / 10 mL pack</td>
+                  <td>Custom/FluidicLab</td>
+                  <td>As needed</td>
+                  <td>Continuous-phase carrier</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>Connection and filtration consumables (syringes, tubing, needles/connectors, filters)</td>
+                  <td>Syringes fit LSP02-3B; tubing and needles/connectors fit chip ports; filters 0.22 um</td>
+                  <td>-</td>
+                  <td>As needed</td>
+                  <td>Aqueous/oil infusion, pump-to-chip connection, chip-port connection, filtration to prevent clogging</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>Bacterial suspension</td>
+                  <td>eGFP / mCherry engineered strains</td>
+                  <td>In-house engineered strain</td>
+                  <td>As needed</td>
+                  <td>Droplet encapsulation target</td>
+                  <td>-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 id="hw-open-source">Open-Source Resources</h3>
+
+          <div class="doc-reveal">
+            <p>
+              All source code, control software, FPGA logic, build documentation, and example data are
+              released openly to support reproducibility and community reuse. The Examples directory
+              provides runnable demonstrations and configuration files for droplet detection, photon
+              counting, DEP triggering, and device synchronization. Please refer to the repository for
+              the latest build guide, wiring and operation instructions, and license information.
+            </p>
+            <p>
+              The open-source repository is available at:
+            </p>
+            <p>
+              <a href="https://yuancheng-nefu.github.io/NEFU-China-Open-Microfluidic-Platform/" target="_blank" rel="noopener">https://yuancheng-nefu.github.io/NEFU-China-Open-Microfluidic-Platform/</a>
+            </p>
+          </div>
+        </section>
+
+      </article>
+    </div>
+
+  </main>
+
+    <footer>
+    <div class="footer-grid">
+      <div class="footer-logos">
+        <img src="../static/teamlogo.png" alt="NEFU-China Team Logo" class="footer-teamlogo" />
+      </div>
+      <div class="footer-col footer-about">
+        <h4>About us</h4>
+        <p>This team is composed of enthusiastic students from five different colleges and various majors. To spy out the secrets of directed evolution, a group of beginners are looking forward to creating extraordinary experiences and we did it.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quicklinks</h4>
+        <ul>
+          <li><a href="background.html">Background</a></li>
+          <li><a href="design.html">Design</a></li>
+          <li><a href="results.html">Results</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact info</h4>
+        <ul>
+          <li>Address : Northeast Forestry University, Harbin, Heilongjiang 150040, P. R. China</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>iDEC-2026 NEFU-China</p>
+    </div>
+  </footer>
+
+  <script src="../js/loader.js"></script>
+  <script src="../js/particles.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/article.js"></script>
+</body>
+</html>

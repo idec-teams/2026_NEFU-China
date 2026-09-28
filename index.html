@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEFU-China iDEC 2026 | Dual-Branch Metabolic Engineering of Vanillic Acid for Chorismate Biosynthesis</title>
+  <meta name="description" content="NEFU-China team wiki for iDEC 2026. Engineering lignin-derived vanillic acid dual bypass pathways for chorismate platform construction." />
+
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/navigation.css" />
+  <link rel="stylesheet" href="css/loader.css" />
+</head>
+<body>
+
+  <canvas id="particles-canvas"></canvas>
+  <div class="bg-gradient-layer" aria-hidden="true"></div>
+
+  <div id="loader" class="loader" role="status" aria-label="Loading">
+    <div class="loader-content">
+      <div class="loader-art">
+        <div class="loader-sticker">
+          <img class="loader-dog" data-phase="0" src="static/img/loader/loader-0.svg" alt="Loading in progress" decoding="async" />
+          <img class="loader-dog" data-phase="25" src="static/img/loader/loader-25.svg" alt="" decoding="async" />
+          <img class="loader-dog" data-phase="50" src="static/img/loader/loader-50.svg" alt="" decoding="async" />
+          <img class="loader-dog" data-phase="75" src="static/img/loader/loader-75.svg" alt="" decoding="async" />
+          <img class="loader-dog" data-phase="100" src="static/img/loader/loader-100.svg" alt="" decoding="async" />
+        </div>
+      </div>
+
+      <div class="loader-text">
+        LOADING
+        <span class="loader-text-dots">
+          <span></span><span></span><span></span>
+        </span>
+      </div>
+      <div class="loader-brand">iDEC | 2026</div>
+    </div>
+  </div>
+
+  <nav id="navbar" class="navbar" role="navigation">
+    <div class="navbar-glass"></div>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">
+        <div class="nav-logo">
+          <img src="static/teamlogo.png" alt="NEFU-China Team Logo" class="nav-logo-img" />
+        </div>
+        <div class="nav-brand-text">
+          <span class="nav-brand-name">NEFU-China</span>
+          <span class="nav-brand-sub">iDEC 2026</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li class="nav-link-item" data-nav="home">
+          <a href="index.html" class="nav-link">Home</a>
+        </li>
+        <li class="nav-link-item" data-nav="team"><a href="team/member.html" class="nav-link">Team</a></li>
+        <li class="nav-link-item has-dropdown" data-nav="project">
+          <a class="nav-link" role="button" tabindex="0">
+            Project
+            <svg class="nav-link-icon" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <div class="nav-dropdown">
+            <a href="project/background.html" class="nav-dropdown-item">Background</a>
+            <a href="project/design.html" class="nav-dropdown-item">Design</a>
+            <a href="project/results.html" class="nav-dropdown-item">Results</a>
+            <a href="static/document/report.pdf" target="_blank" class="nav-dropdown-item">Report</a>
+            <a href="static/document/supplementary-information.pdf" target="_blank" class="nav-dropdown-item">Supplementary Information</a>
+          
+            <a href="project/hardware.html" class="nav-dropdown-item">Hardware</a></div>
+        </li>
+        <li class="nav-link-item has-dropdown" data-nav="document">
+          <a class="nav-link" role="button" tabindex="0">
+            Document
+            <svg class="nav-link-icon" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <div class="nav-dropdown">
+            <a href="document/notebook.html" class="nav-dropdown-item">Notebook</a>
+            <a href="document/safety.html" class="nav-dropdown-item">Safety</a>
+            <a href="document/protocol.html" class="nav-dropdown-item">Protocol</a>
+          </div>
+        </li>
+        </ul>
+
+      <button id="navToggle" class="nav-toggle" aria-label="Toggle menu">
+        <div class="nav-toggle-icon">
+          <span></span><span></span><span></span>
+        </div>
+      </button>
+    </div>
+    <div class="nav-scroll-indicator"></div>
+  </nav>
+
+  <div id="mobileNav" class="mobile-nav">
+    <div class="mobile-nav-section" data-section="home">
+      <a href="index.html" class="mobile-nav-top">Home</a>
+    </div>
+    <a href="team/member.html" class="mobile-nav-top">Team</a>
+    <div class="mobile-nav-section" data-section="project">
+      <button class="mobile-nav-head" type="button" aria-expanded="false">
+        <span class="mobile-nav-title">Project</span>
+        <svg class="mobile-nav-chevron" viewBox="0 0 16 16" fill="none">
+          <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="mobile-nav-sublist">
+        <a href="project/background.html" class="mobile-nav-link">Background</a>
+        <a href="project/design.html" class="mobile-nav-link">Design</a>
+        <a href="project/results.html" class="mobile-nav-link">Results</a>
+        <a href="static/document/report.pdf" target="_blank" class="mobile-nav-link">Report</a>
+        <a href="static/document/supplementary-information.pdf" target="_blank" class="mobile-nav-link">Supplementary Information</a>
+      
+        <a href="project/hardware.html" class="mobile-nav-link">Hardware</a></div>
+    </div>
+    <div class="mobile-nav-section" data-section="document">
+      <button class="mobile-nav-head" type="button" aria-expanded="false">
+        <span class="mobile-nav-title">Document</span>
+        <svg class="mobile-nav-chevron" viewBox="0 0 16 16" fill="none">
+          <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="mobile-nav-sublist">
+        <a href="document/notebook.html" class="mobile-nav-link">Notebook</a>
+        <a href="document/safety.html" class="mobile-nav-link">Safety</a>
+        <a href="document/protocol.html" class="mobile-nav-link">Protocol</a>
+      </div>
+    </div>
+    </div>
+
+  <main>
+
+    <section class="hero">
+      <div class="container">
+        <h1 class="hero-title reveal reveal-delay-1">
+          <span class="hero-title-line">Efficient Dual-Pathway Valorization of</span>
+          <span class="hero-title-line">Lignin-Derived Vanillic Acid via</span>
+          <span class="hero-title-line">Biosensor-Assisted Directed Evolution</span>
+        </h1>
+
+        <p class="hero-desc reveal reveal-delay-2">
+          Engineering Lignin-Derived Vanillic Acid Dual Bypass Pathways for Chorismate Platform Construction
+        </p>
+      </div>
+
+      <div class="hero-scroll-hint">
+        <span>Scroll</span>
+        <svg class="scroll-arrow" viewBox="0 0 24 24" fill="none">
+          <path d="M12 4V20M12 20L6 14M12 20L18 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </section>
+
+    <div class="content-bg">
+      <div class="bg-block">
+        <img src="static/img/bg-top.svg" alt="" class="bg-img" />
+        <div class="bg-text-box" style="left: 43.037%; top: 31.02%; width: 51.45%; height: 9.6%;">
+          <p style="font-size: 2.3vw;">Lignocellulose is abundant renewable biomass awaiting full exploitation, yet it is mostly limited to low-value applications. This is mainly hindered by lignin&rsquo;s heterogeneous structure and inherent recalcitrance. Previous attempts to valorize lignin have developed catalytic depolymerization and biological funneling strategies, which still face challenges such as substrate toxicity and metabolic flux imbalance.</p>
+        </div>
+        <div class="bg-picture-box" style="left: 15.481%; top: 52.22%; width: 36.12%; height: 35.64%;">
+          <img src="static/img/home_img_1.svg" alt="" />
+        </div>
+        <div class="bg-text-box bg-text-box--stack" style="left: 55.259%; top: 56.58%; width: 37.896%; height: 5.083%;">
+          <h3 style="font-size: 2.3vw;">Core Strategy</h3>
+          <p class="bg-quote" style="font-size: 1.25vw;">&ldquo;Monomer Funnel + Directional Metabolic Branch + Pyruvate Self-Supply + Hardware-Assited Microfluidic Screening&rdquo;</p>
+          <p style="font-size: 1.25vw;">Converge diverse lignin depolymerization products into vanillic acid (VA) as the unified intermediate, establish modular pathways for VA-to-pyruvate supply and VA-to-CHA bioconversion, and deploy droplet microfluidics to enable high-throughput mutant screening.</p>
+        </div>
+        <div class="bg-text-box bg-text-box--stack bg-text-box--module" style="left: 53.6%; top: 64.22%; width: 38.2%; height: 5.5%;">
+          <h3>01 MONOMER FUNNEL MODULE</h3>
+          <p>Through co-expressed oxidation enzymes and cofactor regeneration systems, multi-enzyme cascades convert lignin-derived monomers generated by electrochemical depolymerization into one product, vanillic acid (VA) — achieving the homogenization of mixed substrates. Protein expression and catalytic performance are validated to support subsequent pathway optimization.</p>
+        </div>
+        <div class="bg-text-box bg-text-box--stack bg-text-box--module" style="left: 53.6%; top: 70.9%; width: 38.2%; height: 5.5%;">
+          <h3>02 VA-TO-CHA CONVERSION MODULE</h3>
+          <p>The homogenized single product vanillic acid (VA) is converted into chorismic acid (CHA) in two steps via intermediate 4-hydroxybenzoic acid (4-HB). ODM demethoxylase catalyzes the transformation from vanillic acid (VA) to 4-hydroxybenzoic acid (4-HB). Biosensor-assisted directed evolution optimizes this rate-limiting enzyme.</p>
+        </div>
+        <div class="bg-text-box bg-text-box--stack bg-text-box--module" style="left: 53.6%; top: 77.5%; width: 36.8%; height: 6.5%;">
+          <h3>03 PYRUVATE SELF-SUPPLY MODULE</h3>
+          <p style="line-height: 1.42;">Vanillic acid (VA) is converted into pyruvate via a complete enzymatic cascade. This cascade provides sufficient pyruvate to support the 4-hydroxybenzoic acid (4-HB)-to-chorismic acid (CHA) reaction step. To further optimize pathway performance, ribosome binding site (RBS) mutants are screened by a pyruvate synthesis-deficient biosensor.</p>
+        </div>
+        <div class="bg-text-box bg-text-box--stack bg-text-box--module" style="left: 51.4%; top: 84.1%; width: 36.8%; height: 6.8%;">
+          <h3>04 Microfluidic Screening Module</h3>
+          <p style="line-height: 1.42;">Individual mutant cells are confined within water-in-oil droplets to construct independent microreactors for parallel bioconversion. The intracellular PobR biosensor converts 4-hydroxybenzoic acid (4-HB) into mCherry fluorescence signals, which is then captured in real time and processed for dielectrophoretic sorting, ultimately enabling rapid identification of high-performance odm mutants.</p>
+        </div>
+      </div>
+      <div class="bg-block">
+        <img src="static/img/bg-bottom.svg" alt="" class="bg-img" />
+        <div class="bg-text-box bg-text-box--list" style="left: 20.37%; top: 36.214%; width: 57.674%; height: 32.685%;">
+          <p><strong>Technical optimization</strong> — further improve the catalytic performance of ODM demethoxylase via error-prone PCR and biosensor-assisted directed evolution, and build a low-cost modular microfluidic platform for high-throughput screening, achieving efficient in-vivo reconstruction of the non-natural VA→4-HB→CHA route.</p>
+          <p><strong>Application expansion</strong> — extend this lignin bioconversion platform to synthesize more chorismic acid (CHA) derivatives, covering pharmaceuticals, functional materials and food additives.</p>
+          <p><strong>Industrial potential</strong> — promote lignin biorefinery toward a green &ldquo;biomass → lignin → high-value chemicals&rdquo; chain, supporting carbon-neutrality goals.</p>
+          <p><strong>Methodological value</strong> — a universal &ldquo;funnel-type&rdquo; modular bioconversion strategy that redirects lignin aromatic carbon away from native degradation toward value-added biosynthesis, offering reference for valorization of other renewable aromatic resources.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+    <footer class="footer-flush">
+    <div class="footer-grid">
+      <div class="footer-logos">
+        <img src="static/teamlogo.png" alt="NEFU-China Team Logo" class="footer-teamlogo" />
+      </div>
+      <div class="footer-col footer-about">
+        <h4>About us</h4>
+        <p>This team is composed of enthusiastic students from five different colleges and various majors. To spy out the secrets of directed evolution, a group of beginners are looking forward to creating extraordinary experiences and we did it.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quicklinks</h4>
+        <ul>
+          <li><a href="project/background.html">Background</a></li>
+          <li><a href="project/design.html">Design</a></li>
+          <li><a href="project/results.html">Results</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact info</h4>
+        <ul>
+          <li>Address : Northeast Forestry University, Harbin, Heilongjiang 150040, P. R. China</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>iDEC-2026 NEFU-China</p>
+    </div>
+  </footer>
+
+  <script src="js/loader.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/hero-snap.js"></script>
+</body>
+</html>

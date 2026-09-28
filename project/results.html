@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEFU-China iDEC 2026 | Results</title>
+  <meta name="description" content="Results: HPLC validation of the monomer funnel, PobR biosensor-assisted ODM screening, the VA-to-pyruvate growth-coupled pathway, and RBS directed evolution." />
+
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/navigation.css" />
+  <link rel="stylesheet" href="../css/loader.css" />
+  <link rel="stylesheet" href="../css/article.css" />
+</head>
+<body>
+
+  <canvas id="particles-canvas"></canvas>
+  <div class="bg-gradient-layer" aria-hidden="true"></div>
+
+  <div id="loader" class="loader" role="status" aria-label="Loading">
+    <div class="loader-content">
+      <div class="loader-art">
+        <div class="loader-sticker">
+          <img class="loader-dog" data-phase="0" src="../static/img/loader/loader-0.svg" alt="Loading in progress" decoding="async" />
+          <img class="loader-dog" data-phase="25" src="../static/img/loader/loader-25.svg" alt="" decoding="async" />
+          <img class="loader-dog" data-phase="50" src="../static/img/loader/loader-50.svg" alt="" decoding="async" />
+          <img class="loader-dog" data-phase="75" src="../static/img/loader/loader-75.svg" alt="" decoding="async" />
+          <img class="loader-dog" data-phase="100" src="../static/img/loader/loader-100.svg" alt="" decoding="async" />
+        </div>
+      </div>
+
+      <div class="loader-text">
+        LOADING
+        <span class="loader-text-dots">
+          <span></span><span></span><span></span>
+        </span>
+      </div>
+      <div class="loader-brand">iDEC | 2026</div>
+    </div>
+  </div>
+
+  <nav id="navbar" class="navbar">
+    <div class="navbar-glass"></div>
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-brand">
+        <div class="nav-logo">
+          <img src="../static/teamlogo.png" alt="NEFU-China Team Logo" class="nav-logo-img" />
+        </div>
+        <div class="nav-brand-text">
+          <span class="nav-brand-name">NEFU-China</span>
+          <span class="nav-brand-sub">iDEC 2026</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li class="nav-link-item" data-nav="home">
+          <a href="../index.html" class="nav-link">Home</a>
+        </li>
+        <li class="nav-link-item" data-nav="team"><a href="../team/member.html" class="nav-link">Team</a></li>
+        <li class="nav-link-item has-dropdown" data-nav="project">
+          <a class="nav-link" role="button" tabindex="0">
+            Project
+            <svg class="nav-link-icon" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <div class="nav-dropdown">
+            <a href="background.html" class="nav-dropdown-item">Background</a>
+            <a href="design.html" class="nav-dropdown-item">Design</a>
+            <a href="results.html" class="nav-dropdown-item">Results</a>
+            <a href="../static/document/report.pdf" target="_blank" class="nav-dropdown-item">Report</a>
+            <a href="../static/document/supplementary-information.pdf" target="_blank" class="nav-dropdown-item">Supplementary Information</a>
+
+            <a href="hardware.html" class="nav-dropdown-item">Hardware</a></div>
+        </li>
+        <li class="nav-link-item has-dropdown" data-nav="document">
+          <a class="nav-link" role="button" tabindex="0">
+            Document
+            <svg class="nav-link-icon" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <div class="nav-dropdown">
+            <a href="../document/notebook.html" class="nav-dropdown-item">Notebook</a>
+            <a href="../document/safety.html" class="nav-dropdown-item">Safety</a>
+            <a href="../document/protocol.html" class="nav-dropdown-item">Protocol</a>
+          </div>
+        </li>
+      </ul>
+
+      <button id="navToggle" class="nav-toggle" aria-label="Toggle menu">
+        <div class="nav-toggle-icon">
+          <span></span><span></span><span></span>
+        </div>
+      </button>
+    </div>
+    <div class="nav-scroll-indicator"></div>
+  </nav>
+
+  <div id="mobileNav" class="mobile-nav">
+    <div class="mobile-nav-section" data-section="home">
+      <a href="../index.html" class="mobile-nav-top">Home</a>
+    </div>
+    <a href="../team/member.html" class="mobile-nav-top">Team</a>
+    <div class="mobile-nav-section" data-section="project">
+      <button class="mobile-nav-head" type="button" aria-expanded="false">
+        <span class="mobile-nav-title">Project</span>
+        <svg class="mobile-nav-chevron" viewBox="0 0 16 16" fill="none">
+          <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="mobile-nav-sublist">
+        <a href="background.html" class="mobile-nav-link">Background</a>
+        <a href="design.html" class="mobile-nav-link">Design</a>
+        <a href="results.html" class="mobile-nav-link">Results</a>
+        <a href="../static/document/report.pdf" target="_blank" class="mobile-nav-link">Report</a>
+        <a href="../static/document/supplementary-information.pdf" target="_blank" class="mobile-nav-link">Supplementary Information</a>
+
+        <a href="hardware.html" class="mobile-nav-link">Hardware</a></div>
+    </div>
+    <div class="mobile-nav-section" data-section="document">
+      <button class="mobile-nav-head" type="button" aria-expanded="false">
+        <span class="mobile-nav-title">Document</span>
+        <svg class="mobile-nav-chevron" viewBox="0 0 16 16" fill="none">
+          <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="mobile-nav-sublist">
+        <a href="../document/notebook.html" class="mobile-nav-link">Notebook</a>
+        <a href="../document/safety.html" class="mobile-nav-link">Safety</a>
+        <a href="../document/protocol.html" class="mobile-nav-link">Protocol</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="doc-page">
+
+    
+    <header class="doc-hero page-hero-banner">
+      <div class="doc-container">
+        <h1 class="doc-title">Results</h1>
+        <button class="doc-toc-toggle" type="button" aria-expanded="false" aria-controls="docToc">
+          Contents
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    
+    <div class="doc-layout doc-container">
+
+      <aside class="doc-toc" id="docToc" aria-label="Table of contents">
+        <nav>
+          <p class="doc-toc-label">On this page</p>
+          <ol class="doc-toc-list" id="docTocList"></ol>
+        </nav>
+      </aside>
+
+      <article class="doc-article" id="docArticle">
+
+        
+        <section class="doc-section" id="overview">
+          <header class="doc-section-head doc-reveal">
+            <div class="doc-section-headtext">
+              <h2>Overview</h2>
+            </div>
+          </header>
+
+          <div class="doc-reveal">
+            <p>
+              <strong>Module 1</strong>: To normalize the core depolymerization monomers of lignin into
+              VA, we verified single-enzyme, dual-enzyme, and multi-enzyme cascade systems<sup>[1–3]</sup>
+              and constructed the Progo, Nov1f, Vdh pathway, successfully confirming the feasibility of
+              the full pathway and providing an economical large-scale fermentation strategy for
+              subsequent studies.
+            </p>
+          </div>
+
+          <div class="doc-reveal">
+            <p>
+              <strong>Module 2</strong>: To improve the efficiency of ODM, the key rate-limiting enzyme
+              in the conversion of VA to 4-HB, we validated the biosensor
+              (BW<em>ΔcodA</em>-gYB2k-<em>pobR</em><sup><em>WT</em></sup>-P<sub>pobA*2</sub>-<em>mCherry</em>-<em>codA</em>-<em>Cmr</em>)
+              and performed primary screening of mutated ODM. After enrichment and validation of
+              high-conversion strains, we obtained a mutant exhibiting 29.28-fold the conversion of the
+              wild type, providing a feasible solution for establishing the completely non-natural VA
+              utilization pathway.
+            </p>
+          </div>
+
+          <div class="doc-reveal">
+            <p>
+              <strong>Module 3</strong>: To achieve the conversion of VA to Pyr<sup>[4]</sup>, we
+              constructed a multi-enzyme pathway and a biosensor (BW<em>ΔgldAΔmaeBΔpykF</em>) that
+              couples cellular growth with in vivo Pyr levels, successfully confirming the feasibility
+              of the full pathway. We further attempted to establish an RBS mutant library to screen
+              mutants with higher conversion efficiency, making the entire project greener.
+            </p>
+          </div>
+
+          <div class="doc-reveal">
+            <p>
+              <strong>Module 4</strong>: To efficiently screen ODM mutants, we independently built a
+              sustainable, high-throughput, low-cost microfluidic screening platform<sup>[5,6]</sup>
+              that serves our laboratory team, and independently developed the corresponding control
+              program. For details, see:<a href="hardware.html#part-3">Hardware Part 3:Result</a>
+            </p>
+          </div>
+        </section>
+
+        
+        <section class="doc-section" id="module-1">
+          <header class="doc-section-head doc-reveal">
+            <span class="doc-section-num" aria-hidden="true">01</span>
+            <div class="doc-section-headtext">
+              <h2>Module 1: From Lignin to VA--The Starting Point</h2>
+            </div>
+          </header>
+
+          <h3 id="r1-single">Validation of single enzymes</h3>
+
+          <div class="doc-reveal">
+            <p>
+              To verify each step of the proposed pathway, we expressed Progo, Nov1f, and Vdh separately
+              by HPLC. Progo converted 4-n-propylguaiacol (4-PG) to isoeugenol<sup>[1,2]</sup>, reaching
+              a reported yield of <strong>6.08% after 3h</strong> (Figure 1A). Nov1f converted isoeugenol
+              to vanillin<sup>[2]</sup>, with a reported yield of <strong>86.8% after 3h</strong>
+              (Figure 1B). Vdh oxidized vanillin to vanillic acid[7] in the presence of NAD⁺, and the
+              reported yield reached <strong>85.5% after 6h</strong> (Figure 1C).
+            </p>
+          </div>
+
+          <figure class="figure-group doc-reveal">
+            <div class="figure-frame">
+              <div class="figure-grid">
+                <div class="figure-item">
+                  <img src="../static/img/results/m1_1a.png" alt="" width="1296" height="899" loading="lazy" decoding="async" />
+                  <span class="figure-item-label">(A)</span>
+                </div>
+                <div class="figure-item">
+                  <img src="../static/img/results/m1_1b.png" alt="" width="1333" height="876" loading="lazy" decoding="async" />
+                  <span class="figure-item-label">(B)</span>
+                </div>
+                <div class="figure-item">
+                  <img src="../static/img/results/m1_1c.png" alt="" width="713" height="438" loading="lazy" decoding="async" />
+                  <span class="figure-item-label">(C)</span>
+                </div>
+              </div>
+            </div>
+            <figcaption>
+              <span class="figure-num"></span>
+              <strong>HPLC verification of the individual reactions in the proposed multienzyme pathway.</strong>
+              (A) Conversion of 4-PG to isoeugenol by Progo-expressing whole cells. (B) Conversion of
+              isoeugenol to vanillin by Nov1f-expressing whole cells. (C) NAD⁺-dependent conversion of
+              vanillin to vanillic acid by Vdh-expressing whole cells.
+            </figcaption>
+          </figure>
+
+          <h3 id="r1-dual">Validation of a dual-enzyme module</h3>
+
+          <div class="doc-reveal">
+            <p>
+              We next tested whether the enzymes retained activity when expressed as paired modules.
+              Whole cells carrying pYB1a-<em>progo</em>-<em>nov1f</em> produced vanillin from 4-PG, with
+              reported yields of <strong>2.68% after 1 h</strong> and 2.27% after 3 h (Figure 2D). Whole
+              cells expressing Vdh and Nox produced vanillic acid from vanillin. The reported yields were
+              23.3% after 3 h, <strong>35.3% after 6 h</strong>, and 33.2% after 12 h (Figure 2E).
+            </p>
+          </div>
+
+          <figure class="figure-group doc-reveal">
+            <div class="figure-frame">
+              <div class="figure-grid">
+                <div class="figure-item">
+                  <img src="../static/img/results/m1_2d.jpg" alt="" width="1387" height="862" loading="lazy" decoding="async" />
+                  <span class="figure-item-label">(D)</span>
+                </div>
+                <div class="figure-item">
+                  <img src="../static/img/results/m1_2e.png" alt="" width="1232" height="862" loading="lazy" decoding="async" />
+                  <span class="figure-item-label">(E)</span>
+                </div>
+              </div>
+            </div>
+            <figcaption>
+              <span class="figure-num"></span>
+              <strong>HPLC verification of product formation by the paired enzyme modules.</strong>
+              (D) Conversion of 4-PG to vanillin by whole cells coexpressing Progo and Nov1f. (E)
+              Conversion of vanillin to vanillic acid by whole cells coexpressing Vdh and Nox.
+            </figcaption>
+          </figure>
+
+          <h3 id="r1-cascade">Validation of a multi-enzyme cascade system</h3>
+
+          <div class="doc-reveal">
+            <p>
+              Finally, we tested whether the combined system could produce vanillic acid (VA) from
+              4-PG. HPLC analysis of the reaction mixture collected after 6 h showed a peak in the VA
+              retention-time region (Figure 3). Based on the quantification reported in the figure,
+              the complete cascade achieved a VA <strong>yield of 1.62%</strong>, a result supports
+              formation of the target end product.
+            </p>
+          </div>
+
+          <figure class="figure-group doc-reveal">
+            <div class="figure-frame">
+              <div class="figure-grid">
+                <div class="figure-item">
+                  <img src="../static/img/results/m1_3.jpg" alt="" width="1632" height="1044" loading="lazy" decoding="async" />
+                </div>
+              </div>
+            </div>
+            <figcaption>
+              <span class="figure-num"></span>
+              <strong>HPLC analysis of VA production by the complete multienzyme cascade.</strong>
+              HPLC analysis of the induced whole-cell reaction after 6 h and the uninduced control,
+              together with standards of VA, isoeugenol, vanillin, and 4-PG. The red dashed inset
+              enlarges the VA retention-time region to facilitate comparison of the reaction sample
+              with the VA standard.
+            </figcaption>
+          </figure>
+        </section>
+
+        
+        <section class="doc-section" id="module-2">
+          <header class="doc-section-head doc-reveal">
+            <span class="doc-section-num" aria-hidden="true">02</span>
+            <div class="doc-section-headtext">
+              <h2>Module 2: From VA to CHA--The Core Module</h2>
+            </div>
+          </header>
+
+          <h3 id="r2-characterization">Characterization of the PobR‑Based Biosensor</h3>
+
+          <div class="doc-reveal">
+            <p>
+              To perform high‑throughput screening of the ODM mutant library, we comprehensively
+              characterized the performance of the whole‑cell biosensor strain
+              BW<em>ΔcodA</em>-gYB2k-<em>pobR</em><sup><em>WT</em></sup>-P<sub>pobA*2</sub>-<em>mCherry</em>-<em>codA</em>-<em>Cmr</em><sup>[8]</sup>.
+              Exogenous 4‑HB at gradient concentrations was supplemented into the system, and normalized
+              fluorescence signals (RFP/OD<sub>600</sub>) were recorded as the readout (Figure 4). The
+              biosensor exhibited an obvious 4‑HB‑dependent response: fluorescence remained at a low
+              basal level under low 4‑HB concentrations; as the 4‑HB concentration gradually increased,
+              the normalized fluorescence signal rose sharply and finally reached signal saturation at
+              high substrate concentrations. This result confirmed that the biosensor constructed in
+              this study could quantitatively convert intracellular 4‑HB concentration changes into
+              instrument‑detectable fluorescent optical signals.
+            </p>
+          </div>
+
+          <figure class="figure-group doc-reveal">
+            <div class="figure-frame">
+              <div class="figure-grid">
+                <div class="figure-item">
+                  <img src="../static/img/results/m2_4.png" alt="" width="848" height="490" loading="lazy" decoding="async" />
+                </div>
+              </div>
+            </div>
+            <figcaption>
+              <span class="figure-num"></span>
+              <strong>4‑HB dose‑response curve of biosensor.</strong>Graph of the correlation between
+              4-HB concentration in the medium and the normalized fluorescence intensity of the
+              biosensor strain, defined as red fluorescent protein (RFP) signal divided by optical
+              density at 600 nm (OD₆₀₀)
+            </figcaption>
+          </figure>
+
+          <div class="doc-reveal">
+            <p>
+              We further set a chloramphenicol concentration gradient and determined the cell growth of
+              biosensor strains with and without exogenous 4‑HB supplementation (Figure 5). In the
+              absence of the effector molecule 4‑HB, elevated chloramphenicol concentration exerted
+              strong growth inhibition on strains. After exogenous 4‑HB was supplemented,
+              ligand‑activated PobR relieved transcriptional repression and drove high‑level expression
+              of the downstream chloramphenicol‑resistance gene <em>Cmr</em><sup>[8]</sup>, which
+              markedly improved the growth capacity of biosensor strains under chloramphenicol selection
+              pressure. Combined assays of fluorescence quantification and cell‑growth phenotypes
+              demonstrated that this dual‑output biosensor could reliably report intracellular 4‑HB
+              abundance via both fluorescent signals and cell‑growth phenotypes, and fully met the
+              experimental requirements for subsequent high‑throughput screening of mutant libraries.
+            </p>
+          </div>
+
+          <figure class="figure-group doc-reveal">
+            <div class="figure-frame">
+              <div class="figure-grid">
+                <div class="figure-item">
+                  <img src="../static/img/results/m2_5.png" alt="" width="816" height="505" loading="lazy" decoding="async" />
+                </div>
+              </div>
+            </div>
+            <figcaption>
+              <span class="figure-num"></span>
+              <strong>Biosensor growth under chloramphenicol gradient with/without 4‑HB.</strong>
+              Growth characterization of the biosensor strain under gradient chloramphenicol (CM)
+              concentrations, with or without exogenous 4‑hydroxybenzoate (4‑HB).
+            </figcaption>
+          </figure>
+
+          <h3 id="r2-screening">Biosensor‑Assisted Screening and HPLC Validation of ODM Variants</h3>
+
+          <div class="doc-reveal">
+            <p>
+              In this study,
+              BW<em>ΔcodA</em>-gYB2k-<em>pobR</em><sup><em>WT</em></sup>-P<sub>pobA*2</sub>-<em>mCherry</em>-<em>codA</em>-<em>Cmr</em>/pYB1a-<em>odm</em>
+              was used for mutant screening, with parallel negative‑control groups including
+              DH5α-pYB1a-<em>eGFP</em>;
+              BW<em>ΔcodA</em>-gYB2k-<em>pobR</em><sup><em>WT</em></sup>-P<sub>pobA*2</sub>-<em>mCherry</em>-<em>codA</em>-<em>Cmr</em>/pYB1a-<em>odm</em>,
+              and the host strain BW<em>ΔcodA</em>. Under chloramphenicol selection pressure, strains
+              harboring high‑activity ODM variants could catalyze the substrate vanillic acid (VA) to
+              produce abundant 4‑HB<sup>[9]</sup>. Accumulated 4‑HB activated the PobR sensing module
+              and conferred a chloramphenicol‑resistance phenotype to host cells<sup>[8]</sup>.
+              Consequently, clones expressing high‑activity ODM possessed prominent growth competitive
+              advantages over strains carrying low‑activity or inactive ODM variants. Acting as an
+              efficient biological filter, the PobR biosensor completed pre‑enrichment of positive
+              clones prior to instrumental quantitative detection, greatly reducing the experimental
+              workload for subsequent high‑precision enzyme‑activity assays.
+            </p>
+          </div>
+
+          <div class="doc-reveal">
+            <p>
+              The ODM mutant library was constructed by random mutagenesis via error‑prone PCR, and
+              three rounds of subculture enrichment were performed using the biosensor‑assisted
+              screening system. After primary biosensor‑assisted screening, 29 candidate clones were
+              picked from Mutant Library A and subjected to direct HPLC quantification for 4‑HB
+              production (Figure 6). Among the 29 candidate clones, 20 ODM variants displayed higher
+              catalytic activity than wild‑type ODM, demonstrating the excellent positive‑mutant
+              enrichment capacity of this PobR biosensor‑based screening platform.
+            </p>
+          </div>
+
+          <figure class="figure-group doc-reveal">
+            <div class="figure-frame">
+              <div class="figure-grid">
+                <div class="figure-item">
+                  <img src="../static/img/results/m2_6.png" alt="" width="1182" height="838" loading="lazy" decoding="async" />
+                </div>
+              </div>
+            </div>
+            <figcaption>
+              <span class="figure-num"></span>
+              <strong>Enzymatic activity of library‑A variants after primary biosensor screening
+              (HPLC).</strong> Catalytic activity of variants from mutant library A after biosensor
+              primary screening, quantified via HPLC. Among the 29 clones selected for detection in
+              the first round of screening, 20 showed higher enzymatic activity than the wild-type
+              (labeled in green color).
+            </figcaption>
+          </figure>
+
+          <div class="doc-reveal">
+            <p>
+              The best‑performing mutant in primary screening yielded 4‑HB at 43.75‑fold of the level
+              produced by wild‑type ODM. Three independent biological replicates for rescreening
+              verified that this superior mutant still achieved an average 4‑HB yield of 29.28‑fold
+              relative to wild‑type ODM (Figure 6). Representative HPLC chromatograms clearly showed
+              the characteristic product peak of 4‑HB generated by catalytic reaction of the screened
+              ODM mutants (Figure 7). These results verified that the PobR biosensor successfully
+              coupled the ODM‑driven biochemical reaction of 4‑HB biosynthesis with two quantitatively
+              measurable cellular phenotypes: mCherry fluorescence output and chloramphenicol
+              resistance. Through the combination of biosensor‑mediated pre‑enrichment and HPLC
+              re‑validation, multiple ODM variants with improved catalytic performance were obtained,
+              providing critical experimental materials for further dissecting the molecular mechanism
+              behind activity enhancement of ODM demethoxylase.
+            </p>
+          </div>
+
+          <figure class="figure-group doc-reveal">
+            <div class="figure-frame">
+              <div class="figure-grid">
+                <div class="figure-item">
+                  <img src="../static/img/results/m2_7.png" alt="" width="1222" height="868" loading="lazy" decoding="async" />
+                </div>
+              </div>
+            </div>
+            <figcaption>
+              <span class="figure-num"></span>
+              <strong>HPLC characterization of catalytic products from ODM mutants.</strong> HPLC
+              analysis of catalytic products fromODM mutants.
+            </figcaption>
+          </figure>
+        </section>
+
+        
+        <section class="doc-section" id="module-3">
+          <header class="doc-section-head doc-reveal">
+            <span class="doc-section-num" aria-hidden="true">03</span>
+            <div class="doc-section-headtext">
+              <h2>Module 3: From VA to Pyr--Toward a Fully Green Route</h2>
+            </div>
+          </header>
+
+          <div class="doc-reveal">
+            <p>
+              Within the overall research framework for high-value valorization of lignin-derived carbon
+              sources, vanillic acid (VA) serves as a unified metabolic entry point that channels
+              structurally diverse lignin-derived aromatic compounds into central metabolic pathways.
+              The research objectives of this module are: (1) to construct an artificially designed
+              six-step biosynthetic pathway that converts vanillic acid into pyruvate; (2) to verify the
+              intracellular function of this pathway using a growth-coupled pyruvate auxotrophic
+              whole-cell biosensor; (3) to perform ribosome-binding-site (RBS)-based directed evolution
+              on downstream rate-limiting genes so as to enhance pathway metabolic flux and pyruvate
+              titer. Intracellularly synthesized pyruvate can replenish the co-substrate demand of the
+              downstream module that converts 4-hydroxybenzoic acid (4-HB) into chorismate (CHA). This
+              renders the entire lignin valorization process greener and improves its sustainability.
+            </p>
+          </div>
+
+          <h3 id="r3-auxotroph">Pyruvate Auxotrophic Biosensor Strain</h3>
+
+          <div class="doc-reveal">
+            <p>
+              To translate pyruvate production into a selectable growth phenotype, an <em>Escherichia
+              coli</em> BW <em>ΔgldA ΔmaeB ΔpykF</em> triple-gene knockout strain was constructed as a
+              growth-coupled whole-cell biosensor. After knocking out three endogenous
+              pyruvate-synthesis-related genes (<em>GldA, MaeB and PykF</em>), the strain cannot
+              synthesize sufficient pyruvate to sustain normal cell proliferation and exhibits poor
+              intrinsic growth. Its survival depends on either exogenous pyruvate or pyruvate generated
+              by the heterologously introduced pathway. This design directly links intracellular
+              pyruvate levels to cellular growth rates, providing a readout for pathway functional
+              validation and subsequent directed-evolution screening.
+            </p>
+          </div>
+
+          <div class="doc-reveal">
+            <p>
+              The response performance of the biosensor was assayed in M9 minimal medium supplemented
+              with serially graded sodium pyruvate. Four concentration gradients (0, 1, 2, 3 g/L) were
+              set in a 96-well plate. OD₆₀₀ was measured with a microplate reader to record bacterial
+              growth curves and quantitatively analyze the dose-effect relationship.
+            </p>
+          </div>
+
+          <div class="doc-reveal">
+            <p>
+              The results demonstrated a positive correlation between cell growth and exogenous pyruvate
+              concentration. The 3 g/L group showed the optimal growth; growth gradually declined in the
+              2 g/L and 1 g/L groups. Growth was drastically repressed in the 0 g/L group, whose growth
+              level was markedly lower than that of the wild-type BW25113 control. These findings
+              indicate that the biosensor exhibits reliable dose-dependent responses within the tested
+              concentration range and is suitable for subsequent pathway evaluation and
+              growth-phenotype-based screening (Figure 8).
+            </p>
+          </div>
+
+          <figure class="figure-group doc-reveal">
+            <div class="figure-frame">
+              <div class="figure-grid">
+                <div class="figure-item">
+                  <img src="../static/img/results/m3_8.png" alt="" width="609" height="470" loading="lazy" decoding="async" />
+                </div>
+              </div>
+            </div>
+            <figcaption>
+              <span class="figure-num"></span>
+              <strong>Dose-response characterization of the pyruvate-auxotrophic whole-cell
+              biosensor</strong> Growth curves of the BW ΔgldA ΔmaeB ΔpykF biosensor strain cultured in
+              M9 minimal medium supplemented with 0, 1, 2 and 3 g/L sodium pyruvate, respectively.
+            </figcaption>
+          </figure>
+
+          <h3 id="r3-validation">Functional Validation of the Vanillic-Acid-to-Pyruvate Biosynthetic Pathway</h3>
+
+          <div class="doc-reveal">
+            <p>
+              The conversion of vanillic acid to pyruvate constitutes an artificially designed six-enzyme
+              cascade pathway. First, VanAB oxygen-demethylase from <em>Pseudomonas</em>
+              <em>putida</em> catalyzes the demethylation of vanillic acid (VA) to produce
+              protocatechuic acid (PCA). Next, AroY protocatechuate decarboxylase from <em>Klebsiella
+              pneumoniae</em> decarboxylates protocatechuic acid to yield catechol (CA)<sup>[10,11]</sup>.
+              Catechol is then cleaved by DmpB catechol 2,3-dioxygenase from Pseudomonas sp. CF600 to
+              form 2-hydroxymuconate semialdehyde (2-HMSA), which is further converted by DmpD hydrolase
+              from the same strain into 2-hydroxy-2,4-hexadienoate (2-HTDA)<sup>[12,13]</sup>. Finally,
+              MhpD 2-keto-4-pentenoate hydratase (UniProtKB accession: P77608) from <em>E. coli</em> K-12
+              hydrates 2-hydroxy-2,4-hexadienoate into 4-hydroxy-2-oxopentanoate (HOPA)<sup>[14,15]</sup>.
+              MhpE 4-hydroxy-2-oxopentanoate aldolase subsequently cleaves HOPA to generate
+              pyruvate.<sup>[14,15]</sup>
+            </p>
+          </div>
+
+          <div class="doc-reveal">
+            <p>
+              To improve pathway assembly flexibility and plasmid compatibility, the full vanillic
+              acid-to-pyruvate pathway was assembled on two separate plasmids,
+              pLB1s-<em>vanAB-aroY-dmpD</em> and pYB1a-<em>dmpB-mhpD-mhpE</em>. These two plasmids carry
+              compatible replicons and distinct antibiotic resistance markers, enabling stable
+              co-replication and co-selection within a single host. Both plasmids were co-transformed
+              into the pyruvate-auxotrophic biosensor strain BW <em>ΔgldA ΔmaeB
+              ΔpykF</em>-pLB1s-vanAB-<em>aroY-dmpD</em>/pYB1a-<em>dmpB-mhpD-mhpE</em>, which
+              reconstitutes the complete pathway to transform vanillic acid into pyruvate.
+            </p>
+          </div>
+
+          <div class="doc-reveal">
+            <p>
+              After confirming robust biosensor performance, multiple experimental conditions were set
+              to characterize pathway function. Four culture conditions were established in M9 medium:
+              (+ara +VA) with both arabinose inducer and vanillic-acid substrate; (−ara +VA) with
+              substrate but no inducer; (+ara) with inducer but no substrate; (−ara) with neither
+              inducer nor substrate. Cell proliferation was monitored by continuous OD₆₀₀ measurement.
+            </p>
+          </div>
+
+          <div class="doc-reveal">
+            <p>
+              Marked proliferation was observed only when both inducer and vanillic-acid substrate were
+              present. The (+ara +VA) group exhibited the fastest growth rate, significantly
+              outperforming the other three groups, followed by the (−ara +VA) group. The (+ara) and
+              (−ara) groups showed the slowest growth. These results prove that pyruvate is produced
+              only upon pathway induction in the presence of vanillic-acid substrate. The reconstructed
+              vanillic-acid-to-pyruvate pathway is fully functional in the host strain; it synthesizes
+              pyruvate to rescue the nutritional auxotrophy and successfully couples pathway metabolic
+              output to the biosensor growth phenotype (Figure 9).
+            </p>
+          </div>
+
+          <figure class="figure-group doc-reveal">
+            <div class="figure-frame">
+              <div class="figure-grid">
+                <div class="figure-item">
+                  <img src="../static/img/results/m3_9.png" alt="" width="647" height="514" loading="lazy" decoding="async" />
+                </div>
+              </div>
+            </div>
+            <figcaption>
+              <span class="figure-num"></span>
+              <strong>Functional validation of the vanillic-acid-to-pyruvate biosynthetic
+              pathway</strong> Growth curves of biosensor strains harboring the pathway under four
+              culture conditions: medium supplemented with both inducer and substrate; substrate only
+              without inducer; inducer only without substrate; neither inducer nor substrate.
+            </figcaption>
+          </figure>
+
+          <h3 id="r3-rbs">RBS Library Construction and High-Throughput Directed Evolution</h3>
+
+          <div class="doc-reveal">
+            <p>
+              To further boost pathway conversion efficiency and pyruvate titer, random-mutagenesis
+              ribosome-binding-site (RBS) libraries were constructed for three downstream genes:
+              <em>dmpB, mhpD and mhpE</em>. Degenerate primers (NNNNN) were used to introduce random
+              mutations at the RBS of target genes, generating a panel of variants with the aim of
+              elevating overall pathway metabolic flux. Library plasmids were extracted and
+              co-transformed with pLB1s-<em>vanAB-aroY-dmpD</em> into the biosensor strain BW <em>ΔgldA
+              ΔmaeB ΔpykF</em>. The wild-type dual-plasmid biosensor strain carrying unmutated RBS
+              sequences was used as the control.
+            </p>
+          </div>
+
+          <div class="doc-reveal">
+            <p>
+              Mutant-library strains and wild-type controls were subjected to high-throughput
+              growth-phenotype-based screening<sup>[16]</sup> in M9 auxotrophic medium supplemented with
+              vanillic-acid substrate. OD₆₀₀ was monitored in real time, and cellular proliferation was
+              recorded to compare growth dynamics between the RBS-mutant library population and
+              wild-type pathway strains.
+            </p>
+          </div>
+
+          <div class="doc-reveal">
+            <p>
+              Growth-phenotype-based screening of the RBS mutant library revealed that wild-type strains
+              displayed higher growth levels than RBS-mutant strains across most time points. Growth
+              levels of the two groups were comparable at only a small number of time points. Under the
+              current screening scale, no mutants with improved activity were recovered (Figure 10).
+            </p>
+          </div>
+
+          <figure class="figure-group doc-reveal">
+            <div class="figure-frame">
+              <div class="figure-grid">
+                <div class="figure-item">
+                  <img src="../static/img/results/m3_10.png" alt="" width="768" height="503" loading="lazy" decoding="async" />
+                </div>
+              </div>
+            </div>
+            <figcaption>
+              <span class="figure-num"></span>
+              <strong>High-throughput screening of the RBS-mutant library based on growth
+              phenotype.</strong> RBS-mutant library populations and wild-type control strains were
+              cultured in vanillic-acid-supplemented M9 auxotrophic medium. OD₆₀₀ values were measured
+              and presented in bar charts.
+            </figcaption>
+          </figure>
+
+          <div class="doc-reveal">
+            <p>
+              In summary, this study accomplished the construction and functional validation of an
+              artificially designed complete vanillic-acid-to-pyruvate biosynthetic pathway. A
+              pyruvate-auxotrophic, growth-coupled whole-cell biosensor was established to reliably
+              convert pathway output signals into growth phenotypes. An RBS-mutagenesis-based
+              directed-evolution screening platform was set up. Intracellularly generated pyruvate can
+              replenish co-substrate consumption for the downstream 4-HB-to-CHA module, supporting the
+              development of a greener lignin high-value-upgrading route. Future work will expand
+              screening throughput and enrich the RBS mutant library to isolate high-performance
+              variants with enhanced pyruvate-synthesis capacity. The biosensor-driven screening
+              workflow reported herein provides a stable, robust and expandable technical platform for
+              future directed evolution of this pathway.
+            </p>
+          </div>
+        </section>
+
+        
+        <section class="doc-section" id="references">
+          <header class="doc-section-head doc-reveal">
+            <div class="doc-section-headtext">
+              <h2>References</h2>
+            </div>
+          </header>
+
+          <div class="doc-reveal">
+            <p>
+              [1]Guo, Y., Alvigini, L., Trajkovic, M., et al. Structure- and computational-aided
+              engineering of an oxidase to produce isoeugenol from a lignin-derived compound.
+              <em>Nat. Commun.</em> 13, 7195 (2022). DOI: <a href="https://doi.org/10.1038/s41467-022-34912-3" target="_blank" rel="noopener">https://doi.org/10.1038/s41467-022-34912-3</a><br />
+              [2]De Simone, M., Alvigini, L., Alonso-Cotchico, L., et al. Rationally guided improvement
+              of NOV1 dioxygenase for the conversion of lignin-derived isoeugenol to vanillin.
+              <em>Biochemistry</em>. 62, 419-428 (2023). DOI: <a href="https://doi.org/10.1021/acs.biochem.2c00168" target="_blank" rel="noopener">https://doi.org/10.1021/acs.biochem.2c00168</a><br />
+              [3]Xu, L., Sethupathy, S., Liang, Z., et al. NAD⁺ regeneration-coupled enzymatic
+              bioconversion of lignin-derived vanillin into VA: A cleaner production approach. <em>Ind.
+              Crops Prod.</em>222, 119921 (2024). DOI: <a href="https://doi.org/10.1016/j.indcrop.2024.119921" target="_blank" rel="noopener">https://doi.org/10.1016/j.indcrop.2024.119921</a><br />
+              [4]Johnson, C. W. &amp; Beckham, G. T. Aromatic catabolic pathway selection for optimal
+              production of Pyr and lactate from lignin. <em>Metab. Eng.</em> 28, 240-247 (2015). DOI:
+              <a href="https://doi.org/10.1016/j.ymben.2015.01.005" target="_blank" rel="noopener">https://doi.org/10.1016/j.ymben.2015.01.005</a><br />
+              [5]Stucki, A., Vallapurackal, J., Ward, T. R. &amp; Dittrich, P. S. Droplet microfluidics
+              and directed evolution of enzymes: An intertwined journey. <em>Angew. Chem. Int. Ed.</em>
+              60, 24368-24387 (2021). DOI: <a href="https://doi.org/10.1002/anie.202016154" target="_blank" rel="noopener">https://doi.org/10.1002/anie.202016154</a><br />
+              [6]Panwar, J., Autour, A. &amp; Merten, C. A. Design and construction of a microfluidics
+              workstation for high-throughput multi-wavelength fluorescence and transmittance activated
+              droplet analysis and sorting. <em>Nat. Protoc.</em> 18, 1090-1136 (2023). DOI:
+              <a href="https://doi.org/10.1038/s41596-022-00796-2" target="_blank" rel="noopener">https://doi.org/10.1038/s41596-022-00796-2</a><br />
+              [7]Marić, I., Guo, Y., Fürst, M. J. L. J., et al. A one-pot, whole-cell biocatalysis
+              approach for vanillin production using lignin oil. <em>Adv. Synth. Catal</em>. 365,
+              3987-3995 (2023). DOI: <a href="https://doi.org/10.1002/adsc.202300868" target="_blank" rel="noopener">https://doi.org/10.1002/adsc.202300868</a><br />
+              [8]Liu, P., Jin, Q., Li, X., et al. Directed evolution and metabolic engineering generate
+              an Escherichia coli cell factory for de novo production of 4-hydroxymandelate.
+              <em>Bioresour</em>.<em> Technol</em>. 413, 131497 (2024). DOI:
+              <a href="https://doi.org/10.1016/j.biortech.2024.131497" target="_blank" rel="noopener">https://doi.org/10.1016/j.biortech.2024.131497</a><br />
+              [9]Choi, W. J., Byun, J. W., Ahn, J. H., et al. Process of biologically producing a
+              p-hydroxybenzoic acid. US Patent 9,206,449 B2, Samsung Electronics Co., Ltd. (2015).
+              Patent record: US9206449B2<br />
+              [10]Weber, C., Brückner, C., Weinreb, S., Lehr, C., Essl, C., &amp; Boles, E. (2012).
+              Biosynthesis of cis , cis -Muconic Acid and Its Aromatic Precursors, Catechol and
+              Protocatechuic Acid, from Renewable Feedstocks by Saccharomyces cerevisiae. Applied and
+              Environmental Microbiology, 78(23), 8421–8430. <a href="https://doi.org/10.1128/aem.01983-12" target="_blank" rel="noopener">https://doi.org/10.1128/aem.01983-12</a><br />
+              [11] Johnson, C. W., Salvachúa, D., Khanna, P., Smith, H., Peterson, D. J. &amp; Beckham,
+              G. T. Enhancing muconic acid production from glucose and lignin-derived aromatic compounds
+              via increased protocatechuate decarboxylase activity. Metab. Eng. Commun. 3, 111–119
+              (2016). DOI: <a href="https://doi.org/10.1016/j.meteno.2016.04.002" target="_blank" rel="noopener">https://doi.org/10.1016/j.meteno.2016.04.002</a><br />
+              [12] Harwood, C. S., &amp; Parales, R. E. (1996). THE Β-KETOADIPATE PATHWAY AND THE
+              BIOLOGY OF SELF-IDENTITY. Annual Review of Microbiology, 50(1), 553–590.
+              <a href="https://doi.org/10.1146/annurev.micro.50.1.553" target="_blank" rel="noopener">https://doi.org/10.1146/annurev.micro.50.1.553</a><br />
+              [13] Nordlund, I. &amp; Shingler, V. Nucleotide sequences of the meta-cleavage pathway
+              enzymes 2-hydroxymuconic semialdehyde dehydrogenase and 2-hydroxymuconic semialdehyde
+              hydrolase from Pseudomonas CF600. Biochim. Biophys. Acta 1049, 227–230 (1990). DOI:
+              <a href="https://doi.org/10.1016/0167-4781(90)90046-5" target="_blank" rel="noopener">https://doi.org/10.1016/0167-4781(90)90046-5</a><br />
+              [14] Ferrández, A., Garciá, J. L., &amp; Díaz, E. (1997). Genetic characterization and
+              expression in heterologous hosts of the 3-(3-hydroxyphenyl)propionate catabolic pathway
+              of Escherichia coli K-12. Journal of Bacteriology, 179(8), 2573–2581.
+              <a href="https://doi.org/10.1128/jb.179.8.2573-2581.1997" target="_blank" rel="noopener">https://doi.org/10.1128/jb.179.8.2573-2581.1997</a><br />
+              [15] Torres, B., Porras, G., García, J. L., &amp; Díaz, E. (2003). Regulation of the mhp
+              Cluster Responsible for 3-(3-Hydroxyphenyl)propionic Acid Degradation in Escherichia
+              coli. Journal of Biological Chemistry, 278(30), 27575–27585.
+              <a href="https://doi.org/10.1074/jbc.m303245200" target="_blank" rel="noopener">https://doi.org/10.1074/jbc.m303245200</a><br />
+              Williams, T. C., Pretorius, I. S., &amp; Paulsen, I. T. (2016). Synthetic evolution of
+              metabolic productivity using biosensors. <em>Trends in Biotechnology</em>, 34(5), 371–381.
+              <a href="https://doi.org/10.1016/j.tibtech.2016.02.002" target="_blank" rel="noopener">https://doi.org/10.1016/j.tibtech.2016.02.002</a>
+            </p>
+          </div>
+        </section>
+
+      </article>
+    </div>
+  </main>
+
+    <footer>
+    <div class="footer-grid">
+      <div class="footer-logos">
+        <img src="../static/teamlogo.png" alt="NEFU-China Team Logo" class="footer-teamlogo" />
+      </div>
+      <div class="footer-col footer-about">
+        <h4>About us</h4>
+        <p>This team is composed of enthusiastic students from five different colleges and various majors. To spy out the secrets of directed evolution, a group of beginners are looking forward to creating extraordinary experiences and we did it.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quicklinks</h4>
+        <ul>
+          <li><a href="background.html">Background</a></li>
+          <li><a href="design.html">Design</a></li>
+          <li><a href="results.html">Results</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact info</h4>
+        <ul>
+          <li>Address : Northeast Forestry University, Harbin, Heilongjiang 150040, P. R. China</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>iDEC-2026 NEFU-China</p>
+    </div>
+  </footer>
+
+  <script src="../js/loader.js"></script>
+  <script src="../js/particles.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/article.js"></script>
+</body>
+</html>
